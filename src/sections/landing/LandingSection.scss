@@ -1,0 +1,11 @@
+@use '../../styles/_colors' as colors;
+
+$section-padding: 32px;
+
+.landing__container {
+  margin: $section-padding;
+  padding: $section-padding;
+  border: 1px solid colors.$base-text;
+  min-height: calc(100vh - $section-padding * 2);
+}
+

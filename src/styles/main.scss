@@ -1,13 +1,29 @@
+@use './colors' as colors;
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
+  background-color: colors.$base-background;
+  color: colors.$base-text;
   margin: 0;
   padding: 0;
   font-family: 'DM Sans', sans-serif;
+  font-weight: 200;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 200;
+}
+
+.highlight {
+  font-style: italic;
   font-weight: 400;
 }

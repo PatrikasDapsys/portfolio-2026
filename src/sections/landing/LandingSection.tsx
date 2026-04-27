@@ -1,6 +1,8 @@
+import './LandingSection.scss'
+
 export function LandingSection() {
   return (
-    <section aria-labelledby="landing__container">
+    <section className="landing__container">
       <div className="landing__top-section">
         <div className="landing__top-section--left">
           <h1 className="landing__title">Patrikas Dapšys</h1>
@@ -17,3 +19,5 @@ export function LandingSection() {
     </section>
   )
 }
+
+// TODO: add a dashing blue ray to landing section
