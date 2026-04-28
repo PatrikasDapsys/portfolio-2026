@@ -1,7 +1,7 @@
 import './LandingTopSection.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faFileLines } from '@fortawesome/free-solid-svg-icons'
+import { LandingSocialLink } from './components/LandingSocialLink/LandingSocialLink'
 
 export function LandingTopSection() {
   return (
@@ -17,18 +17,11 @@ export function LandingTopSection() {
       </div>
       <div className="landing__top-section--right">
         <ul className="landing__social-links">
-          <li className="landing__social-link">
-            <FontAwesomeIcon icon={faEnvelope} />
-          </li>
-          <li className="landing__social-link">
-            <FontAwesomeIcon icon={faGithub} />
-          </li>
-          <li className="landing__social-link">
-            <FontAwesomeIcon icon={faLinkedin} />
-          </li>
-          <li className="landing__social-link">
-            <FontAwesomeIcon icon={faFileLines} />
-          </li>
+          <LandingSocialLink icon={faEnvelope} label="Email" link="mailto:patrikas.dapsys@gmail.com" />
+          <LandingSocialLink icon={faGithub} label="GitHub" link="https://github.com/patrikasdapsys" />
+          <LandingSocialLink icon={faLinkedin} label="LinkedIn" link="https://www.linkedin.com/in/patrikas-dapsys/" />
+          <LandingSocialLink icon={faFileLines} label="Resume" link="https://www.linkedin.com/in/patrikas-dapsys/" />
+           {/* TODO: Add resume link/llink to contact page */}
         </ul>
       </div>
     </div>
