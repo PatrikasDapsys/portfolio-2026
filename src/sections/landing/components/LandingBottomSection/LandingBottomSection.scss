@@ -1,0 +1,12 @@
+.landing__bottom-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+  min-height: 220px;
+  gap: 40px;
+
+  &--left,
+  &--right {
+    flex: 1;
+  }
+}
