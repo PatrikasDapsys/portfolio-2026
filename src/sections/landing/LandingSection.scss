@@ -1,13 +1,89 @@
 @use '../../styles/_colors' as colors;
 
 $section-padding: 32px;
+$blue: #1b43e3;
+$ray-width: 100px;
 
 .landing__container {
   margin: $section-padding;
   padding: $section-padding;
   border: 1px solid colors.$baseText;
   min-height: calc(100vh - $section-padding * 2);
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: -36%;
+    width: $ray-width;
+    height: 230%;
+    transform: rotate(16deg);
+    transform-origin: top right;
+    background: linear-gradient(
+      180deg,
+      rgba($blue, 0) 0%,
+      rgba($blue, 0.18) 18%,
+      rgba($blue, 0.35) 45%,
+      rgba($blue, 0.12) 68%,
+      rgba($blue, 0) 100%
+    );
+    filter: blur(48px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media (min-width: 577px) {
+  .landing__container::before {
+    top: 10%;
+    right: -36%;
+    transform: rotate(36deg);
+    filter: blur(48px);
+  }
+}
+
+@media (min-width: 769px) {
+  .landing__container::before {
+    top: 8%;
+    right: -30%;
+    transform: rotate(35deg);
+    filter: blur(62px);
+  }
+}
+
+@media (min-width: 993px) {
+  .landing__container::before {
+    top: 7%;
+    right: -26%;
+    transform: rotate(34deg);
+    filter: blur(74px);
+  }
+}
+
+@media (min-width: 1201px) {
+  .landing__container::before {
+    top: 6%;
+    right: -24%;
+    transform: rotate(33deg);
+    filter: blur(82px);
+  }
+}
+
+@media (min-width: 1401px) {
+  .landing__container::before {
+    top: 5%;
+    right: -22%;
+    transform: rotate(33deg);
+    filter: blur(90px);
+  }
 }
