@@ -1,12 +1,50 @@
 .landing__bottom-section {
   display: flex;
   justify-content: space-between;
-  margin-top: 48px;
-  min-height: 220px;
   gap: 40px;
 
-  &--left,
+  &--left {
+    display: flex;
+    align-items: flex-end;
+    
+    .landing__bottom-section-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      list-style: disc;
+      font-size: 16px;
+      margin-left: 16px;
+
+      .link__hover-effect {
+        text-decoration: none;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          bottom: -3px;
+          height: 1px;
+          width: 0;
+          background-color: currentColor;
+          transition: all 300ms ease;
+        }
+
+        &:hover::after {
+          left: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+
   &--right {
-    flex: 1;
+    font-size: 80px;
+    font-weight: 200;
+    text-align: right;
+    text-transform: uppercase;
+    line-height: 1;
+    font-weight: 100;
+    letter-spacing: 6px;
   }
 }
