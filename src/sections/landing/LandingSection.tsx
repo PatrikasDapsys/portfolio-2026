@@ -1,14 +1,18 @@
 import './LandingSection.scss'
 import { LandingBottomSection } from './components/LandingBottomSection/LandingBottomSection'
+import { LandingOuterSection } from './components/LandingOuterSection/LandingOuterSection'
 import { LandingTopSection } from './components/LandingTopSection/LandingTopSection'
 
 export function LandingSection() {
   return (
-    <section className="landing__container">
-      <LandingTopSection />
-      <LandingBottomSection />
+    <section className="landing">
+      <div className="landing__container">
+        <LandingTopSection />
+        <LandingBottomSection />
+      </div>
+      <LandingOuterSection />
     </section>
   )
 }
 
-// TODO: add a dashing blue ray to landing section
+// TODO: fix ray overlay issue

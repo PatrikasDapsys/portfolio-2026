@@ -1,8 +1,12 @@
 @use '../../styles/_colors' as colors;
+@use '../../styles/_breakpoints' as breakpoints;
 
 $section-padding: 32px;
-$blue: #1b43e3;
 $ray-width: 100px;
+
+.landing {
+  position: relative;
+}
 
 .landing__container {
   margin: $section-padding;
@@ -24,26 +28,13 @@ $ray-width: 100px;
     height: 230%;
     transform: rotate(16deg);
     transform-origin: top right;
-    background: linear-gradient(
-      180deg,
-      rgba($blue, 0) 0%,
-      rgba($blue, 0.18) 18%,
-      rgba($blue, 0.35) 45%,
-      rgba($blue, 0.12) 68%,
-      rgba($blue, 0) 100%
-    );
+    background: colors.$darkBlue;
     filter: blur(48px);
     pointer-events: none;
-    z-index: 0;
-  }
-
-  > * {
-    position: relative;
-    z-index: 1;
   }
 }
 
-@media (min-width: 577px) {
+@media (min-width: breakpoints.$breakpoint-sm) {
   .landing__container::before {
     top: 10%;
     right: -36%;
@@ -52,7 +43,7 @@ $ray-width: 100px;
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: breakpoints.$breakpoint-md) {
   .landing__container::before {
     top: 8%;
     right: -30%;
@@ -61,7 +52,7 @@ $ray-width: 100px;
   }
 }
 
-@media (min-width: 993px) {
+@media (min-width: breakpoints.$breakpoint-lg) {
   .landing__container::before {
     top: 7%;
     right: -26%;
@@ -70,7 +61,7 @@ $ray-width: 100px;
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: breakpoints.$breakpoint-xl) {
   .landing__container::before {
     top: 6%;
     right: -24%;
@@ -79,7 +70,7 @@ $ray-width: 100px;
   }
 }
 
-@media (min-width: 1401px) {
+@media (min-width: breakpoints.$breakpoint-xxl) {
   .landing__container::before {
     top: 5%;
     right: -22%;

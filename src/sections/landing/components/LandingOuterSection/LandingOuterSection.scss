@@ -1,0 +1,35 @@
+@use '../../../../styles/_colors' as colors;
+
+$tag-x-offset: -72px;
+$tag-y-offset: 80px;
+
+$theme-switcher-x-offset: -70px;
+$theme-switcher-y-offset: 78px;
+
+.landing {
+  &__tag {
+    color: colors.$baseDarkText;
+    position: absolute;
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    
+    &--first {
+      transform: rotate(270deg);
+      top: $tag-y-offset;
+      left: $tag-x-offset;
+    }
+
+    &--second {
+      transform: rotate(90deg);
+      right: $tag-x-offset;
+      bottom: $tag-y-offset;
+    }
+  }
+
+  .theme-switcher {
+    position: absolute;
+    left: $theme-switcher-x-offset;
+    bottom: $theme-switcher-y-offset;
+  }
+} 
