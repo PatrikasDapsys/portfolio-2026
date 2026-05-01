@@ -16,26 +16,24 @@ $left-section-max-width: 500px;
       display: flex;
       font-size: 24px;
       flex-direction: column;
-      gap: 12px;
-
-      @media (min-width: breakpoints.$breakpoint-sm) {
-        gap: 8px;
-      }
+      gap: 18px;
     }
   }
 
   .landing__title {
     font-size: 48px;
     padding-bottom: 8px;
+
+    @media (min-width: breakpoints.$breakpoint-sm) {
+      font-size: 64px;
+    }
   }
 
   .landing__description {
     font-size: 14px;
-  }
 
-  @media (min-width: breakpoints.$breakpoint-sm) {
-    .landing__title {
-      font-size: 48px;
+    @media (min-width: breakpoints.$breakpoint-sm) {
+      font-size: 16px;
     }
   }
 }

@@ -53,6 +53,10 @@
     
     @media (min-width: breakpoints.$breakpoint-sm) {
       font-weight: 100;
+      font-size: 64px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-md) {
       font-size: 80px;
     }
   }
