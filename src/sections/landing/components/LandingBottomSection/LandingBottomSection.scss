@@ -1,3 +1,5 @@
+@use '../../../../styles/_breakpoints' as breakpoints;
+
 .landing__bottom-section {
   display: flex;
   justify-content: space-between;
@@ -10,10 +12,11 @@
     .landing__bottom-section-list {
       display: flex;
       flex-direction: column;
+      font-style: italic;
       gap: 8px;
-      list-style: disc;
       font-size: 16px;
-      margin-left: 16px;
+      white-space: nowrap;
+
 
       .landing__bottom-section-link {
         text-decoration: none;
@@ -39,12 +42,18 @@
   }
 
   &--right {
-    font-size: 80px;
+    display: flex;
+    align-items: flex-end;
+    font-size: 22px;
     font-weight: 200;
     text-align: right;
     text-transform: uppercase;
     line-height: 1;
-    font-weight: 100;
-    letter-spacing: 6px;
+    letter-spacing: 4px;
+    
+    @media (min-width: breakpoints.$breakpoint-sm) {
+      font-weight: 100;
+      font-size: 80px;
+    }
   }
 }

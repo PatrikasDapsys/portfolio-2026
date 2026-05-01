@@ -1,3 +1,4 @@
+@use '../../../../styles/_breakpoints' as breakpoints;
 $left-section-max-width: 500px;
 
 .landing__top-section {
@@ -15,11 +16,26 @@ $left-section-max-width: 500px;
       display: flex;
       font-size: 24px;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
+
+      @media (min-width: breakpoints.$breakpoint-sm) {
+        gap: 8px;
+      }
     }
   }
 
   .landing__title {
+    font-size: 48px;
     padding-bottom: 8px;
+  }
+
+  .landing__description {
+    font-size: 14px;
+  }
+
+  @media (min-width: breakpoints.$breakpoint-sm) {
+    .landing__title {
+      font-size: 48px;
+    }
   }
 }

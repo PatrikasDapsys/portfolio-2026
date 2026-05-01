@@ -1,6 +1,8 @@
 @use '../../../../styles/_colors' as colors;
+@use '../../../../styles/_breakpoints' as breakpoints;
 
-$theme-switcher-state-size: 22px  ;
+$theme-switcher-state-size: 14px;
+$theme-switcher-state-size-sm: 22px;
 
 .theme-switcher {
   display: flex;
@@ -38,6 +40,11 @@ $theme-switcher-state-size: 22px  ;
     height: $theme-switcher-state-size;
     border: 1px solid colors.$baseDarkText;
     transition: border-color 0.3s ease;
+
+    @media (min-width: breakpoints.$breakpoint-sm) {
+      width: $theme-switcher-state-size-sm;
+      height: $theme-switcher-state-size-sm;
+    }
   }
 
   &__label {

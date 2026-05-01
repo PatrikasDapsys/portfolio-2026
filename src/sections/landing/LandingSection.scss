@@ -2,7 +2,12 @@
 @use '../../styles/_breakpoints' as breakpoints;
 @use '../../styles/_z-index' as zIndex;
 
-$section-padding: 32px;
+$section-margin: 24px;
+$section-padding: 16px;
+
+$section-margin-sm: 32px;
+$section-padding-sm: 32px;
+
 $ray-width: 100px;
 
 .landing {
@@ -10,16 +15,23 @@ $ray-width: 100px;
 }
 
 .landing__container {
-  margin: $section-padding;
+  margin: $section-margin;
   padding: $section-padding;
   border: 1px solid colors.$baseText;
-  min-height: calc(100vh - $section-padding * 2);
+  min-height: calc(100vh - $section-margin * 2);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
+  @media (min-width: breakpoints.$breakpoint-sm) {
+    margin: $section-margin-sm;
+    padding: $section-padding-sm;
+  }
+}
+
+.landing__container {
   &::before {
     content: '';
     position: absolute;
@@ -34,49 +46,49 @@ $ray-width: 100px;
     pointer-events: none;
     z-index: zIndex.$ray-z-index;
   }
-}
 
-@media (min-width: breakpoints.$breakpoint-sm) {
-  .landing__container::before {
-    top: 10%;
-    right: -36%;
-    transform: rotate(36deg);
-    filter: blur(48px);
+  @media (min-width: breakpoints.$breakpoint-sm) {
+    &::before {
+      top: 10%;
+      right: -36%;
+      transform: rotate(36deg);
+      filter: blur(48px);
+    }
   }
-}
 
-@media (min-width: breakpoints.$breakpoint-md) {
-  .landing__container::before {
-    top: 8%;
-    right: -30%;
-    transform: rotate(35deg);
-    filter: blur(62px);
+  @media (min-width: breakpoints.$breakpoint-md) {
+    &::before {
+      top: 8%;
+      right: -30%;
+      transform: rotate(35deg);
+      filter: blur(62px);
+    }
   }
-}
 
-@media (min-width: breakpoints.$breakpoint-lg) {
-  .landing__container::before {
-    top: 7%;
-    right: -26%;
-    transform: rotate(34deg);
-    filter: blur(74px);
+  @media (min-width: breakpoints.$breakpoint-lg) {
+    &::before {
+      top: 7%;
+      right: -26%;
+      transform: rotate(34deg);
+      filter: blur(74px);
+    }
   }
-}
 
-@media (min-width: breakpoints.$breakpoint-xl) {
-  .landing__container::before {
-    top: 6%;
-    right: -24%;
-    transform: rotate(33deg);
-    filter: blur(82px);
+  @media (min-width: breakpoints.$breakpoint-xl) {
+    &::before {
+      top: 6%;
+      right: -24%;
+      transform: rotate(33deg);
+      filter: blur(82px);
+    }
   }
-}
 
-@media (min-width: breakpoints.$breakpoint-xxl) {
-  .landing__container::before {
-    top: 5%;
-    right: -22%;
-    transform: rotate(33deg);
-    filter: blur(90px);
+  @media (min-width: breakpoints.$breakpoint-xxl) {
+    &::before {
+      top: 5%;
+      right: -22%;
+      transform: rotate(33deg);
+      filter: blur(90px);
+    }
   }
 }

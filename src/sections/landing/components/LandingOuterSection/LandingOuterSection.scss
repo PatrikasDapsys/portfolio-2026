@@ -1,10 +1,16 @@
 @use '../../../../styles/_colors' as colors;
+@use '../../../../styles/_breakpoints' as breakpoints;
 
-$tag-x-offset: -72px;
+$tag-x-offset: -80px;
 $tag-y-offset: 80px;
 
-$theme-switcher-x-offset: -70px;
+$tag-x-sm-offset: -72px;
+$tag-y-sm-offset: 80px;
+
+$theme-switcher-x-offset: -64px;
 $theme-switcher-y-offset: 78px;
+
+$theme-switcher-x-sm-offset: -70px;
 
 .landing {
   &__tag {
@@ -18,12 +24,20 @@ $theme-switcher-y-offset: 78px;
       transform: rotate(270deg);
       top: $tag-y-offset;
       left: $tag-x-offset;
+      
+      @media (min-width: breakpoints.$breakpoint-sm) {
+        left: $tag-x-sm-offset;
+      }
     }
 
     &--second {
       transform: rotate(90deg);
       right: $tag-x-offset;
       bottom: $tag-y-offset;
+
+      @media (min-width: breakpoints.$breakpoint-sm) {
+        right: $tag-x-sm-offset;
+      }
     }
   }
 
@@ -31,5 +45,9 @@ $theme-switcher-y-offset: 78px;
     position: absolute;
     left: $theme-switcher-x-offset;
     bottom: $theme-switcher-y-offset;
+
+    @media (min-width: breakpoints.$breakpoint-sm) {
+      left: $theme-switcher-x-sm-offset;
+    }
   }
 } 
