@@ -14,5 +14,3 @@ export function LandingSection() {
     </section>
   )
 }
-
-// TODO: fix ray overlay issue
