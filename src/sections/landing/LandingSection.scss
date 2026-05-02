@@ -30,6 +30,10 @@ $ray-width: 100px;
     margin: $section-margin-sm;
     padding: $section-padding-sm;
   }
+
+  & > * {
+    z-index: zIndex.$layer-1;
+  }
 }
 
 .landing__container {
