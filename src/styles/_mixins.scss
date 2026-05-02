@@ -1,0 +1,5 @@
+@use './colors' as colors;
+
+@mixin base-border {
+  border: 1px solid colors.$baseText;
+}

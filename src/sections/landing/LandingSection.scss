@@ -1,6 +1,7 @@
 @use '../../styles/_colors' as colors;
 @use '../../styles/_breakpoints' as breakpoints;
 @use '../../styles/_z-index' as zIndex;
+@use '../../styles/_mixins' as mixins;
 
 $section-margin: 24px;
 $section-padding: 16px;
@@ -15,9 +16,9 @@ $ray-width: 100px;
 }
 
 .landing__container {
+  @include mixins.base-border;
   margin: $section-margin;
   padding: $section-padding;
-  border: 1px solid colors.$baseText;
   min-height: calc(100vh - $section-margin * 2);
   position: relative;
   overflow: hidden;

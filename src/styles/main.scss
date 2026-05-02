@@ -6,6 +6,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  line-height: 1;
 }
 
 html,
@@ -36,4 +37,11 @@ h1 {
 .highlight {
   font-style: italic;
   font-weight: 500;
+}
+
+.section-title {
+  font-size: 72px;
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 28px;
 }
