@@ -1,15 +1,29 @@
 import './ExperienceEntry.scss'
 
-export function ExperienceEntry() {
+type ExperienceEntryProps = {
+  reversed?: boolean
+}
+
+export function ExperienceEntry({ reversed = false }: ExperienceEntryProps) {
+  const className = `experience-entry${reversed ? ' experience-entry--reversed' : ''}`
+
   return (
-    <article className="experience-entry">
-      <header className="experience-entry__header">
-        <h3 className="experience-entry__title">Role title</h3>
-        <p className="experience-entry__meta">Company · Dates</p>
-      </header>
-      <ul className="experience-entry__highlights">
-        <li>First highlight</li>
-      </ul>
+    <article className={className}>
+      <div className="experience-entry__top">Web Developer</div>
+      <div className="experience-entry__middle">
+        <span className="experience-entry__circle" aria-hidden="true" />
+        <div className="experience-entry__separator-container">
+          <span className="experience-entry__separator" />
+        </div>
+      </div>
+      <div className="experience-entry__bottom">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+      </div>
     </article>
   )
 }

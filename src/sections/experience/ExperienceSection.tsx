@@ -9,6 +9,7 @@ export function ExperienceSection() {
       </h2>
       <div className="experience__container">
         <ExperienceEntry />
+        <ExperienceEntry reversed />
       </div>
     </section>
   )

@@ -1,3 +1,72 @@
+@use '../../../../styles/_colors' as colors;
+
+$circle-size: 28px;
+$border-width: 1px;
+$gap-size: 16px;
+
 .experience-entry {
-  // Styles for a single role entry (BEM: __header, __title, __meta, __highlights)
+  display: flex;
+  flex-direction: column;
+  gap: $gap-size;
+
+  &__top {
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    border-left: $border-width solid colors.$baseDarkText;
+    padding-left: $gap-size;
+    margin-left: calc($circle-size / 2 - $border-width);
+  }
+
+  &__middle {
+    display: flex;
+    gap: $gap-size;
+
+    .experience-entry__separator-container {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    .experience-entry__separator {
+      width: 100%;
+      height: 1px;
+      background-color: colors.$baseDarkText;
+    }
+
+  }
+
+  &__circle {
+    display: block;
+    width: $circle-size;
+    height: $circle-size;
+    border: $border-width solid colors.$baseDarkText;
+    border-radius: 50%;
+  }
+
+  &__bottom {
+    min-height: 150px;
+    border-left: $border-width solid colors.$baseDarkText;
+    padding-left: $gap-size;
+    margin-left: calc($circle-size / 2 - $border-width);
+  }
+
+  &--reversed {
+    .experience-entry__top,
+    .experience-entry__bottom {
+      border-left: none;
+      border-right: $border-width solid colors.$baseDarkText;
+      padding-left: 0;
+      padding-right: $gap-size;
+      margin-left: 0;
+      margin-right: calc($circle-size / 2 - $border-width);
+      text-align: right;
+    }
+
+    .experience-entry__middle {
+      flex-direction: row-reverse;
+    }
+  }
 }
