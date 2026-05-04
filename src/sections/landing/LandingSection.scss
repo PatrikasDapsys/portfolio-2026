@@ -1,3 +1,4 @@
+@use '../../styles/_blur-ray' as blurRay;
 @use '../../styles/_colors' as colors;
 @use '../../styles/_breakpoints' as breakpoints;
 @use '../../styles/_z-index' as zIndex;
@@ -5,11 +6,46 @@
 
 $section-margin: 24px;
 $section-padding: 16px;
-
 $section-margin-sm: 32px;
 $section-padding-sm: 32px;
-
-$ray-width: 100px;
+$landing-ray-steps: (
+  base: (
+    top: 10%,
+    right: -36%,
+    angle: 16,
+    blur: 48px,
+  ),
+  sm: (
+    top: 10%,
+    right: -36%,
+    angle: 36,
+    blur: 48px,
+  ),
+  md: (
+    top: 8%,
+    right: -30%,
+    angle: 35,
+    blur: 62px,
+  ),
+  lg: (
+    top: 7%,
+    right: -26%,
+    angle: 34,
+    blur: 74px,
+  ),
+  xl: (
+    top: 6%,
+    right: -24%,
+    angle: 33,
+    blur: 82px,
+  ),
+  xxl: (
+    top: 5%,
+    right: -22%,
+    angle: 33,
+    blur: 90px,
+  ),
+);
 
 .landing {
   position: relative;
@@ -17,14 +53,16 @@ $ray-width: 100px;
 
 .landing__container {
   @include mixins.base-border;
-  margin: $section-margin;
-  padding: $section-padding;
-  min-height: calc(100vh - $section-margin * 2);
-  position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: calc(100vh - $section-margin * 2);
+  margin: $section-margin;
+  padding: $section-padding;
+
+  & > * {
+    z-index: zIndex.$layer-1;
+  }
 
   @media (min-width: breakpoints.$breakpoint-sm) {
     min-height: calc(100vh - $section-margin-sm * 2);
@@ -32,69 +70,11 @@ $ray-width: 100px;
     padding: $section-padding-sm;
   }
 
-  & > * {
-    z-index: zIndex.$layer-1;
-  }
-}
-
-.landing__container {
-  &::before {
-    content: '';
-    position: absolute;
-    top: 10%;
-    right: -36%;
-    width: $ray-width;
-    height: 230%;
-    transform: rotate(16deg);
-    transform-origin: top right;
-    background: colors.$darkBlue;
-    filter: blur(48px);
-    pointer-events: none;
-    z-index: zIndex.$ray-z-index;
-  }
-
-  @media (min-width: breakpoints.$breakpoint-sm) {
-    &::before {
-      top: 10%;
-      right: -36%;
-      transform: rotate(36deg);
-      filter: blur(48px);
-    }
-  }
-
-  @media (min-width: breakpoints.$breakpoint-md) {
-    &::before {
-      top: 8%;
-      right: -30%;
-      transform: rotate(35deg);
-      filter: blur(62px);
-    }
-  }
-
-  @media (min-width: breakpoints.$breakpoint-lg) {
-    &::before {
-      top: 7%;
-      right: -26%;
-      transform: rotate(34deg);
-      filter: blur(74px);
-    }
-  }
-
-  @media (min-width: breakpoints.$breakpoint-xl) {
-    &::before {
-      top: 6%;
-      right: -24%;
-      transform: rotate(33deg);
-      filter: blur(82px);
-    }
-  }
-
-  @media (min-width: breakpoints.$breakpoint-xxl) {
-    &::before {
-      top: 5%;
-      right: -22%;
-      transform: rotate(33deg);
-      filter: blur(90px);
-    }
-  }
+  @include blurRay.blur-ray-before(
+    $width: 100px,
+    $height: 230%,
+    $background: colors.$darkBlue,
+    $z-index: zIndex.$ray-z-index,
+    $steps: $landing-ray-steps
+  );
 }

@@ -1,6 +1,47 @@
 @use '../../styles/_colors' as colors;
 @use '../../styles/_breakpoints' as breakpoints;
 @use '../../styles/_mixins' as mixins;
+@use '../../styles/_blur-ray' as blurRay;
+@use '../../styles/_z-index' as zIndex;
+
+$landing-ray-steps: (
+  base: (
+    top: -12%,
+    right: 10%,
+    angle: 39,
+    blur: 70px,
+  ),
+  sm: (
+    top: -12%,
+    right: 30%,
+    angle: 50,
+    blur: 70px,
+  ),
+  md: (
+    top: -12%,
+    right: 26%,
+    angle: 54,
+    blur: 90px,
+  ),
+  lg: (
+    top: -12%,
+    right: 26%,
+    angle: 54,
+    blur: 74px,
+  ),
+  xl: (
+    top: -12%,
+    right: 26%,
+    angle: 54,
+    blur: 82px,
+  ),
+  xxl: (
+    top: -12%,
+    right: 26%,
+    angle: 54,
+    blur: 90px,
+  ),
+);
 
 .experience {
   display: flex;
@@ -12,6 +53,13 @@
 
 .experience__container {
   @include mixins.base-border;
+  @include blurRay.blur-ray-before(
+    $width: 80px,
+    $height: 230%,
+    $background: colors.$darkBlue,
+    $z-index: zIndex.$ray-z-index,
+    $steps: $landing-ray-steps
+  );
   display: flex;
   flex-direction: column;
   gap: 32px;

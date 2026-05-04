@@ -1,0 +1,76 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
+@use './breakpoints' as breakpoints;
+
+$blur-ray-breakpoint-min-widths: (
+  sm: breakpoints.$breakpoint-sm,
+  md: breakpoints.$breakpoint-md,
+  lg: breakpoints.$breakpoint-lg,
+  xl: breakpoints.$breakpoint-xl,
+  xxl: breakpoints.$breakpoint-xxl,
+);
+
+@function blur-ray-resolve-angle($angle) {
+  @if meta.type-of($angle) == 'number' {
+    @if math.is-unitless($angle) {
+      @return $angle * 1deg;
+    }
+
+    @return $angle;
+  }
+
+  @return string.unquote($angle);
+}
+
+/// Blurred diagonal strip as `::before`. `$steps` must include `base`, then optional `sm` … `xxl`.
+/// Each step map: `top`, `right`, `angle` (unitless deg, angle value, or string), `blur` (length).
+@mixin blur-ray-before(
+  $width,
+  $height,
+  $background,
+  $transform-origin: top right,
+  $z-index,
+  $steps
+) {
+  @each $bp, $props in $steps {
+    @if $bp == base {
+      overflow: hidden;
+      position: relative;
+
+      &::before {
+        pointer-events: none;
+        content: '';
+
+        position: absolute;
+        z-index: $z-index;
+        top: map.get($props, top);
+        right: map.get($props, right);
+        transform-origin: $transform-origin;
+        transform: rotate(blur-ray-resolve-angle(map.get($props, angle)));
+
+        width: $width;
+        height: $height;
+
+        background: $background;
+        filter: blur(map.get($props, blur));
+      }
+    } @else {
+      $min: map.get($blur-ray-breakpoint-min-widths, $bp);
+
+      @if not $min {
+        @error 'blur-ray-before: unknown breakpoint `#{$bp}` (expected base, sm, md, lg, xl, xxl)';
+      }
+
+      @media (min-width: $min) {
+        &::before {
+          top: map.get($props, top);
+          right: map.get($props, right);
+          transform: rotate(blur-ray-resolve-angle(map.get($props, angle)));
+          filter: blur(map.get($props, blur));
+        }
+      }
+    }
+  }
+}
