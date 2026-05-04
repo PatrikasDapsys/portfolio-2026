@@ -13,6 +13,9 @@ export function ExperienceEntry({ reversed = false }: ExperienceEntryProps) {
       <div className="experience-entry__middle">
         <span className="experience-entry__circle" aria-hidden="true" />
         <div className="experience-entry__separator-container">
+          <div className="experience-entry__date">
+            2024 - 2026
+          </div>
           <span className="experience-entry__separator" />
         </div>
       </div>

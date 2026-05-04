@@ -1,13 +1,16 @@
 @use '../../../../styles/_colors' as colors;
 
-$circle-size: 28px;
-$border-width: 1px;
-$gap-size: 16px;
+$marker-size: 28px;
+$line-thickness: 1px;
+$entry-section-gap: 16px;
+$content-padding: 32px;
+$line-offset: calc($marker-size / 2 - $line-thickness);
 
 .experience-entry {
   display: flex;
   flex-direction: column;
-  gap: $gap-size;
+  gap: $entry-section-gap;
+  padding-right: $line-offset;
 
   &__top {
     font-style: italic;
@@ -15,19 +18,31 @@ $gap-size: 16px;
     font-weight: 200;
     text-transform: uppercase;
     letter-spacing: 4px;
-    border-left: $border-width solid colors.$baseDarkText;
-    padding-left: $gap-size;
-    margin-left: calc($circle-size / 2 - $border-width);
+    border-left: $line-thickness solid colors.$baseDarkText;
+    padding-left: $content-padding;
+    padding-top: 8px;
+    margin-left: $line-offset;
   }
 
   &__middle {
     display: flex;
-    gap: $gap-size;
+    gap: $entry-section-gap;
 
     .experience-entry__separator-container {
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      text-align: left;
+      align-items: flex-start;
       flex-grow: 1;
+    }
+
+    .experience-entry__date {
+      font-size: 12px;
+      font-style: italic;
+      font-weight: 200;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      padding-bottom: 4px;
     }
 
     .experience-entry__separator {
@@ -40,33 +55,39 @@ $gap-size: 16px;
 
   &__circle {
     display: block;
-    width: $circle-size;
-    height: $circle-size;
-    border: $border-width solid colors.$baseDarkText;
+    width: $marker-size;
+    height: $marker-size;
+    border: $line-thickness solid colors.$baseDarkText;
     border-radius: 50%;
   }
 
   &__bottom {
     min-height: 150px;
-    border-left: $border-width solid colors.$baseDarkText;
-    padding-left: $gap-size;
-    margin-left: calc($circle-size / 2 - $border-width);
+    border-left: $line-thickness solid colors.$baseDarkText;
+    padding-left: $content-padding;
+    margin-left: $line-offset;
   }
 
   &--reversed {
+    padding-right: 0;
+    padding-left: $line-offset;
+    
     .experience-entry__top,
     .experience-entry__bottom {
       border-left: none;
-      border-right: $border-width solid colors.$baseDarkText;
+      border-right: $line-thickness solid colors.$baseDarkText;
       padding-left: 0;
-      padding-right: $gap-size;
+      padding-right: $content-padding;
       margin-left: 0;
-      margin-right: calc($circle-size / 2 - $border-width);
+      margin-right: $line-offset;
       text-align: right;
     }
 
     .experience-entry__middle {
       flex-direction: row-reverse;
+      .experience-entry__separator-container {
+        align-items: flex-end;
+      }
     }
   }
 }
