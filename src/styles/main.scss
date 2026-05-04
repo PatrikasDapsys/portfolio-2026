@@ -1,4 +1,5 @@
 @use './colors' as colors;
+@use './breakpoints' as breakpoints;
 
 *,
 *::before,
@@ -34,14 +35,30 @@ h1 {
   line-height: 1;
 }
 
+section {
+  &:not(:first-child) {
+    margin-top: 80px; 
+  }
+}
+
 .highlight {
   font-style: italic;
   font-weight: 500;
 }
 
 .section-title {
-  font-size: 72px;
+  font-size: 36px;
   font-weight: 200;
   text-transform: uppercase;
-  letter-spacing: 28px;
+  letter-spacing: 6px;
+  
+  @media (min-width: breakpoints.$breakpoint-sm) {
+    font-size: 48px;
+    letter-spacing: 12px;
+  }
+
+  @media (min-width: breakpoints.$breakpoint-md) {
+    font-size: 72px;
+    letter-spacing: 28px;
+  }
 }

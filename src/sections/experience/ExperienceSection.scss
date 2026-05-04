@@ -3,11 +3,11 @@
 @use '../../styles/_mixins' as mixins;
 
 .experience {
-  margin-top: 80px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin: inherit 32px;
 }
 
 .experience__container {
@@ -15,10 +15,13 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  max-width: 1000px; // Temporary width
+  max-width: 800px;
   margin-top: 32px;
   margin-bottom: 80px; // Temporary margin
-  padding: 72px 32px;
+  padding: 40px 16px;
 
+  @media (min-width: breakpoints.$breakpoint-sm) {
+    padding: 52px 32px;
+  }
 }
 
