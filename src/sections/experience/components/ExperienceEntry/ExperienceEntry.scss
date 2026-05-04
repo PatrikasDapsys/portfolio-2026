@@ -87,6 +87,7 @@ $line-offset: calc($marker-size / 2 - $line-thickness);
 
     .experience-entry__middle {
       flex-direction: row-reverse;
+      
       .experience-entry__separator-container {
         align-items: flex-end;
       }
