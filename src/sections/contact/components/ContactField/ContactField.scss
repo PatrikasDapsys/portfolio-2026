@@ -1,5 +1,18 @@
 @use '../../../../styles/colors' as colors;
 
+@mixin center-out-line($position-y) {
+  background-image:
+    linear-gradient(colors.$baseWhite, colors.$baseWhite),
+    linear-gradient(colors.$baseDarkText, colors.$baseDarkText);
+  background-repeat: no-repeat;
+  background-position:
+    center $position-y,
+    center $position-y;
+  background-size:
+    0 1px,
+    100% 1px;
+}
+
 .contact__field {
   position: relative;
   width: 100%;
@@ -9,16 +22,16 @@
 .contact__input {
   width: 100%;
   border: 0;
-  border-bottom: 1px solid colors.$baseDarkText;
-  padding: 22px 0 10px;
+  padding: 28px 0 0px;
   background: transparent;
+  @include center-out-line(bottom);
   color: colors.$baseWhite;
   font-family: inherit;
   font-size: 14px;
   line-height: 1.2;
   text-align: center;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: background-size 0.3s ease;
 
   &::placeholder {
     color: transparent;
@@ -27,8 +40,10 @@
 
 .contact__input--textarea {
   min-height: 140px;
-  padding-top: 52px;
+  margin-top: 38px;
+  padding-top: 14px;
   padding-bottom: 14px;
+  overflow: hidden;
   resize: vertical;
 }
 
@@ -57,7 +72,9 @@
 
 .contact__field:focus-within .contact__input,
 .contact__input:not(:placeholder-shown) {
-  border-bottom-color: colors.$baseWhite;
+  background-size:
+    100% 1px,
+    100% 1px;
 }
 
 .contact__field--message .contact__label {
@@ -69,11 +86,12 @@
   top: 44px;
   left: 0;
   width: 100%;
-  border-bottom: 1px solid colors.$baseDarkText;
+  height: 1px;
+  @include center-out-line(center);
   pointer-events: none;
   transition:
     top 0.2s ease,
-    border-color 0.2s ease;
+    background-size 0.3s ease;
 }
 
 .contact__field--message:focus-within .contact__label,
@@ -84,5 +102,7 @@
 .contact__field--message:focus-within .contact__top-border,
 .contact__field--message .contact__input:not(:placeholder-shown) ~ .contact__top-border {
   top: 38px;
-  border-bottom-color: colors.$baseWhite;
+  background-size:
+    100% 1px,
+    100% 1px;
 }

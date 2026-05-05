@@ -16,7 +16,7 @@ export function ContactForm() {
           label="Email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          inputProps={{ type: 'email', autoComplete: 'email' }}
+          inputProps={{ type: 'email', autoComplete: 'email', maxLength: 60 }}
         />
       </div>
       <div className="contact__field-container contact__field-container--title">
@@ -26,7 +26,7 @@ export function ContactForm() {
           label="Title"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
-          inputProps={{ type: 'text' }}
+          inputProps={{ type: 'text', maxLength: 70 }}
         />
       </div>
       <div className="contact__field-container contact__field-container--message">
@@ -38,7 +38,7 @@ export function ContactForm() {
           value={message}
           onChange={(event) => setMessage(event.target.value)}
           fieldClassName="contact__field--message"
-          textareaProps={{ rows: 4 }}
+          textareaProps={{ rows: 4, maxLength: 1000 }}
         />
       </div>
       <button className="contact__submit" type="button">
