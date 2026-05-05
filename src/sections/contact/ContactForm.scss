@@ -1,0 +1,53 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/breakpoints' as breakpoints;
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 26px;
+  margin-top: 18px;
+
+  @media (min-width: breakpoints.$breakpoint-sm) {
+    gap: 32px;
+  }
+}
+
+.contact__field-container {
+  width: 100%;
+}
+
+.contact__field-container--email {
+  max-width: 80%;
+}
+
+.contact__field-container--title {
+  max-width: 70%;
+}
+
+.contact__field-container--message {
+  max-width: 90%;
+}
+
+.contact__submit {
+  min-width: 220px;
+  border: 1px solid colors.$baseDarkText;
+  margin-top: 4px;
+  padding: 16px 24px;
+  background: transparent;
+  color: colors.$baseText;
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    border-color: colors.$baseWhite;
+    color: colors.$baseWhite;
+  }
+}

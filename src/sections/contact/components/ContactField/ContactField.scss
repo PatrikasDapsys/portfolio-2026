@@ -1,0 +1,88 @@
+@use '../../../../styles/colors' as colors;
+
+.contact__field {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+}
+
+.contact__input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid colors.$baseDarkText;
+  padding: 22px 0 10px;
+  background: transparent;
+  color: colors.$baseWhite;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &::placeholder {
+    color: transparent;
+  }
+}
+
+.contact__input--textarea {
+  min-height: 140px;
+  padding-top: 52px;
+  padding-bottom: 14px;
+  resize: vertical;
+}
+
+.contact__label {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  font-size: 16px;
+  color: colors.$baseDarkText;
+  pointer-events: none;
+  transition:
+    top 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.contact__field:focus-within .contact__label,
+.contact__input:not(:placeholder-shown) + .contact__label {
+  top: 6px;
+  transform: translateX(-50%);
+  color: colors.$baseWhite;
+}
+
+.contact__field:focus-within .contact__input,
+.contact__input:not(:placeholder-shown) {
+  border-bottom-color: colors.$baseWhite;
+}
+
+.contact__field--message .contact__label {
+  top: 18px;
+}
+
+.contact__field--message .contact__top-border {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid colors.$baseDarkText;
+  pointer-events: none;
+  transition:
+    top 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.contact__field--message:focus-within .contact__label,
+.contact__field--message .contact__input:not(:placeholder-shown) ~ .contact__label {
+  top: 10px;
+}
+
+.contact__field--message:focus-within .contact__top-border,
+.contact__field--message .contact__input:not(:placeholder-shown) ~ .contact__top-border {
+  top: 38px;
+  border-bottom-color: colors.$baseWhite;
+}

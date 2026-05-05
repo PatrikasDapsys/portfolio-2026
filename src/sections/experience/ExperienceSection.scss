@@ -7,7 +7,6 @@
 $container-padding-base: 40px 16px;
 $container-padding-sm: 52px 32px;
 $container-margin-top: 32px;
-$container-margin-bottom: 80px;
 
 $landing-ray-steps: (
   base: (
@@ -53,7 +52,7 @@ $landing-ray-steps: (
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: inherit 32px;
+  margin: 0 32px;
 }
 
 .experience__container {
@@ -70,7 +69,6 @@ $landing-ray-steps: (
   gap: 32px;
   max-width: 800px;
   margin-top: $container-margin-top;
-  margin-bottom: $container-margin-bottom;
   padding: $container-padding-base;
 
   @media (min-width: breakpoints.$breakpoint-sm) {
