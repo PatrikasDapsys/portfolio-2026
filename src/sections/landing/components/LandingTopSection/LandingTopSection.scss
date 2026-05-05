@@ -1,11 +1,12 @@
-@use '../../../../styles/_breakpoints' as breakpoints;
+@use '../../../../styles/breakpoints' as breakpoints;
+
 $left-section-max-width: 500px;
 
 .landing__top-section {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
   gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
 
   &--left {
     max-width: $left-section-max-width;
@@ -14,15 +15,15 @@ $left-section-max-width: 500px;
   &--right {
     .landing__social-links {
       display: flex;
-      font-size: 24px;
       flex-direction: column;
       gap: 18px;
+      font-size: 24px;
     }
   }
 
   .landing__title {
-    font-size: 48px;
     padding-bottom: 8px;
+    font-size: 48px;
 
     @media (min-width: breakpoints.$breakpoint-sm) {
       font-size: 64px;

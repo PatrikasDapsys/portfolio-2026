@@ -1,6 +1,8 @@
 @use './colors' as colors;
 @use './breakpoints' as breakpoints;
 
+// Base reset
+
 *,
 *::before,
 *::after {
@@ -10,23 +12,24 @@
   line-height: 1;
 }
 
+// Document defaults
+
 html,
 body {
-  background-color: colors.$baseBackground;
-  color: colors.$baseText;
   margin: 0;
   padding: 0;
   font-family: 'DM Sans', sans-serif;
   font-weight: 200;
+  line-height: 1;
+  color: colors.$baseText;
+  background-color: colors.$baseBackground;
 }
+
+// Element defaults
 
 a {
-  text-decoration: none;
   color: inherit;
-}
-
-ul {
-  list-style: none;
+  text-decoration: none;
 }
 
 h1 {
@@ -35,23 +38,33 @@ h1 {
   line-height: 1;
 }
 
+ul {
+  list-style: none;
+}
+
+// Layout spacing
+
 section {
   &:not(:first-child) {
-    margin-top: 80px; 
+    margin-top: 80px;
   }
 }
 
+// Reusable utility classes
+
 .highlight {
-  font-style: italic;
   font-weight: 500;
+  font-style: italic;
 }
+
+// Shared section heading pattern
 
 .section-title {
   font-size: 36px;
   font-weight: 200;
   text-transform: uppercase;
   letter-spacing: 6px;
-  
+
   @media (min-width: breakpoints.$breakpoint-sm) {
     font-size: 48px;
     letter-spacing: 12px;

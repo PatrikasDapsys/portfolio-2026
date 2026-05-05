@@ -1,50 +1,54 @@
-@use '../../../../styles/_colors' as colors;
-@use '../../../../styles/_z-index' as zIndex;
+@use '../../../../styles/colors' as colors;
+@use '../../../../styles/z-index' as zIndex;
 
 $marker-size: 28px;
 $line-thickness: 1px;
-$entry-section-gap: 16px;
+$section-gap: 16px;
 $content-padding: 32px;
+$date-padding-bottom: 4px;
 $line-offset: calc($marker-size / 2 - $line-thickness);
+$timeline-shadow:
+  0 0 16px 4px colors.$darkBlue,
+  0 0 12px 2px colors.$darkBlue inset;
 
 .experience-entry {
+  z-index: zIndex.$layer-1;
   display: flex;
   flex-direction: column;
-  gap: $entry-section-gap;
+  gap: $section-gap;
   padding-right: $line-offset;
-  z-index: zIndex.$layer-1;
 
   &__top {
-    font-style: italic;
+    margin-left: $line-offset;
+    padding-top: 8px;
+    padding-left: $content-padding;
+    border-left: $line-thickness solid colors.$baseDarkText;
     font-size: 24px;
     font-weight: 200;
+    font-style: italic;
     text-transform: uppercase;
     letter-spacing: 4px;
-    border-left: $line-thickness solid colors.$baseDarkText;
-    padding-left: $content-padding;
-    padding-top: 8px;
-    margin-left: $line-offset;
   }
 
   &__middle {
     display: flex;
-    gap: $entry-section-gap;
+    gap: $section-gap;
 
     .experience-entry__separator-container {
       display: flex;
       flex-direction: column;
-      text-align: left;
-      align-items: flex-start;
       flex-grow: 1;
+      align-items: flex-start;
+      text-align: left;
     }
 
     .experience-entry__date {
+      padding-bottom: $date-padding-bottom;
       font-size: 12px;
-      font-style: italic;
       font-weight: 200;
+      font-style: italic;
       text-transform: uppercase;
       letter-spacing: 4px;
-      padding-bottom: 4px;
     }
 
     .experience-entry__separator {
@@ -61,28 +65,28 @@ $line-offset: calc($marker-size / 2 - $line-thickness);
     height: $marker-size;
     border: $line-thickness solid colors.$baseDarkText;
     border-radius: 50%;
-    box-shadow: 0 0 16px 4px colors.$darkBlue, 0 0 12px 2px colors.$darkBlue inset;
+    box-shadow: $timeline-shadow;
   }
 
   &__bottom {
     min-height: 150px;
-    border-left: $line-thickness solid colors.$baseDarkText;
-    padding-left: $content-padding;
     margin-left: $line-offset;
+    padding-left: $content-padding;
+    border-left: $line-thickness solid colors.$baseDarkText;
   }
 
   &--reversed {
     padding-right: 0;
     padding-left: $line-offset;
-    
+
     .experience-entry__top,
     .experience-entry__bottom {
-      border-left: none;
-      border-right: $line-thickness solid colors.$baseDarkText;
-      padding-left: 0;
-      padding-right: $content-padding;
-      margin-left: 0;
       margin-right: $line-offset;
+      margin-left: 0;
+      padding-right: $content-padding;
+      padding-left: 0;
+      border-right: $line-thickness solid colors.$baseDarkText;
+      border-left: none;
       text-align: right;
     }
 

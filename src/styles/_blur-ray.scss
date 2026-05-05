@@ -36,23 +36,20 @@ $blur-ray-breakpoint-min-widths: (
 ) {
   @each $bp, $props in $steps {
     @if $bp == base {
-      overflow: hidden;
       position: relative;
+      overflow: hidden;
 
       &::before {
         pointer-events: none;
         content: '';
-
         position: absolute;
         z-index: $z-index;
         top: map.get($props, top);
         right: map.get($props, right);
         transform-origin: $transform-origin;
         transform: rotate(blur-ray-resolve-angle(map.get($props, angle)));
-
         width: $width;
         height: $height;
-
         background: $background;
         filter: blur(map.get($props, blur));
       }

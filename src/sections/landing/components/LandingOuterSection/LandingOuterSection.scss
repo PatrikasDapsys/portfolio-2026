@@ -1,29 +1,26 @@
-@use '../../../../styles/_colors' as colors;
-@use '../../../../styles/_breakpoints' as breakpoints;
+@use '../../../../styles/colors' as colors;
+@use '../../../../styles/breakpoints' as breakpoints;
 
 $tag-x-offset: -80px;
 $tag-y-offset: 80px;
-
 $tag-x-sm-offset: -72px;
 $tag-y-sm-offset: 80px;
-
 $theme-switcher-x-offset: -64px;
 $theme-switcher-y-offset: 78px;
-
 $theme-switcher-x-sm-offset: -70px;
 
 .landing {
   &__tag {
-    color: colors.$baseDarkText;
     position: absolute;
     font-size: 18px;
-    letter-spacing: 3px;
     font-weight: 600;
-    
+    color: colors.$baseDarkText;
+    letter-spacing: 3px;
+
     &--first {
-      transform: rotate(270deg);
       top: $tag-y-offset;
       left: $tag-x-offset;
+      transform: rotate(270deg);
       
       @media (min-width: breakpoints.$breakpoint-sm) {
         left: $tag-x-sm-offset;
@@ -31,9 +28,9 @@ $theme-switcher-x-sm-offset: -70px;
     }
 
     &--second {
-      transform: rotate(90deg);
       right: $tag-x-offset;
       bottom: $tag-y-offset;
+      transform: rotate(90deg);
 
       @media (min-width: breakpoints.$breakpoint-sm) {
         right: $tag-x-sm-offset;
@@ -43,8 +40,8 @@ $theme-switcher-x-sm-offset: -70px;
 
   .theme-switcher {
     position: absolute;
-    left: $theme-switcher-x-offset;
     bottom: $theme-switcher-y-offset;
+    left: $theme-switcher-x-offset;
 
     @media (min-width: breakpoints.$breakpoint-sm) {
       left: $theme-switcher-x-sm-offset;

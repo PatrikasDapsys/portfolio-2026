@@ -1,8 +1,13 @@
-@use '../../styles/_colors' as colors;
-@use '../../styles/_breakpoints' as breakpoints;
-@use '../../styles/_mixins' as mixins;
-@use '../../styles/_blur-ray' as blurRay;
-@use '../../styles/_z-index' as zIndex;
+@use '../../styles/colors' as colors;
+@use '../../styles/breakpoints' as breakpoints;
+@use '../../styles/mixins' as mixins;
+@use '../../styles/blur-ray' as blurRay;
+@use '../../styles/z-index' as zIndex;
+
+$container-padding-base: 40px 16px;
+$container-padding-sm: 52px 32px;
+$container-margin-top: 32px;
+$container-margin-bottom: 80px;
 
 $landing-ray-steps: (
   base: (
@@ -45,9 +50,9 @@ $landing-ray-steps: (
 
 .experience {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: inherit 32px;
 }
 
@@ -64,12 +69,12 @@ $landing-ray-steps: (
   flex-direction: column;
   gap: 32px;
   max-width: 800px;
-  margin-top: 32px;
-  margin-bottom: 80px; // Temporary margin
-  padding: 40px 16px;
+  margin-top: $container-margin-top;
+  margin-bottom: $container-margin-bottom;
+  padding: $container-padding-base;
 
   @media (min-width: breakpoints.$breakpoint-sm) {
-    padding: 52px 32px;
+    padding: $container-padding-sm;
   }
 }
 

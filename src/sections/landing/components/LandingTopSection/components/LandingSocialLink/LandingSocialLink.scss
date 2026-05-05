@@ -1,35 +1,35 @@
-@use '../../../../../../styles/_colors' as colors;
-@use '../../../../../../styles/_breakpoints' as breakpoints;
+@use '../../../../../../styles/colors' as colors;
+@use '../../../../../../styles/breakpoints' as breakpoints;
 
 .landing-social-link {
-  transition: color 0.3s ease;
   cursor: pointer;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
   gap: 16px;
+  align-items: center;
+  justify-content: flex-end;
+  transition: color 0.3s ease;
 
   &:hover {
     color: colors.$baseWhite;
 
     .landing-social-link__text {
-      opacity: 1;
       transform: translateX(0);
+      opacity: 1;
     }
   }
 
   &__container {
     display: flex;
-    align-items: center;
     gap: 16px;
+    align-items: center;
   }
 
   &__text {
+    transform: translateX(30px);
     display: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
     font-size: 16px;
     opacity: 0;
-    transform: translateX(30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 
     @media (min-width: breakpoints.$breakpoint-sm) {
       display: flex;
