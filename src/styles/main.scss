@@ -60,18 +60,25 @@ section {
 // Shared section heading pattern
 
 .section-title {
+  $letter-spacing: 6px;
+  $letter-spacing-sm: 12px;
+  $letter-spacing-md: 28px;
+
   font-size: 36px;
   font-weight: 200;
   text-transform: uppercase;
-  letter-spacing: 6px;
+  letter-spacing: $letter-spacing;
+  margin-right: -$letter-spacing;
 
   @media (min-width: breakpoints.$breakpoint-sm) {
     font-size: 48px;
-    letter-spacing: 12px;
+    letter-spacing: $letter-spacing-sm;
+    margin-right: -$letter-spacing-sm;
   }
 
   @media (min-width: breakpoints.$breakpoint-md) {
     font-size: 72px;
-    letter-spacing: 28px;
+    letter-spacing: $letter-spacing-md;
+    margin-right: -$letter-spacing-md;
   }
 }

@@ -42,12 +42,14 @@
   letter-spacing: 10px;
   text-transform: uppercase;
   cursor: pointer;
-  transition:
-    border-color 0.2s ease,
-    color 0.2s ease;
-
+  transition: box-shadow 0.3s ease;
+  box-shadow:
+    0 0 16px 4px colors.$darkBlue,
+    0 0 12px 2px colors.$darkBlue inset;
+  
   &:hover {
-    border-color: colors.$baseWhite;
-    color: colors.$baseWhite;
+    box-shadow:
+      0 0 16px 4px colors.$darkBlue,
+      0 0 50px 2px colors.$darkBlue inset;
   }
 }

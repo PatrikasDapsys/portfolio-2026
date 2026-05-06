@@ -8,7 +8,7 @@ $container-padding-base: 40px 16px;
 $container-padding-sm: 52px 32px;
 $container-margin-top: 32px;
 
-$landing-ray-steps: (
+$experience-ray-steps: (
   base: (
     top: -12%,
     right: 10%,
@@ -62,7 +62,7 @@ $landing-ray-steps: (
     $height: 230%,
     $background: colors.$darkBlue,
     $z-index: zIndex.$ray-z-index,
-    $steps: $landing-ray-steps
+    $steps: $experience-ray-steps
   );
   display: flex;
   flex-direction: column;
