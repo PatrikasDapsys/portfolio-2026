@@ -1,0 +1,73 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/breakpoints' as breakpoints;
+
+$icon-size: 48px;
+
+.footer {
+  border-top: 1px solid rgba(colors.$baseWhite, 0.08);
+  margin-top: 80px;
+  background: linear-gradient(to bottom, colors.$baseBackground, colors.$baseBlack);
+  padding: 36px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+
+  @media (min-width: breakpoints.$breakpoint-sm) {
+    padding-bottom: 44px;
+  }
+}
+
+.footer__scroll-top {
+  width: $icon-size;
+  height: $icon-size;
+  border: 1px solid rgba(colors.$baseWhite, 0.28);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: colors.$baseText;
+  font-size: 24px;
+  transition: box-shadow 0.4s ease;
+  box-shadow:
+    0 0 16px 4px colors.$darkBlue,
+    0 0 12px 2px colors.$darkBlue inset;
+
+  &:hover {
+    box-shadow:
+      0 0 16px 4px colors.$darkBlue,
+      0 0 30px 2px colors.$darkBlue inset;
+  }
+}
+
+.footer__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  color: colors.$baseDarkText;
+  font-size: 14px;
+
+  .footer__link {
+    transition: color 0.2s ease;  
+
+    &:hover {
+      color: colors.$baseText;
+    }
+  }
+
+  @media (min-width: breakpoints.$breakpoint-sm) {
+    gap: 36px;
+    font-size: 18px;
+  }
+}
+
+.footer__copyright {
+  color: colors.$baseDarkText;
+  font-size: 14px;
+
+  @media (min-width: breakpoints.$breakpoint-sm) {
+    font-size: 18px;
+  }
+}

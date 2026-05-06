@@ -21,7 +21,7 @@ export function LandingTopSection() {
           <LandingSocialLink icon={faGithub} label="GitHub" link="https://github.com/patrikasdapsys" />
           <LandingSocialLink icon={faLinkedin} label="LinkedIn" link="https://www.linkedin.com/in/patrikas-dapsys/" />
           <LandingSocialLink icon={faFileLines} label="Resume" link="https://www.linkedin.com/in/patrikas-dapsys/" />
-           {/* TODO: Add resume link/llink to contact page */}
+           {/* TODO: Add resume link/link to contact page */}
         </ul>
       </div>
     </div>

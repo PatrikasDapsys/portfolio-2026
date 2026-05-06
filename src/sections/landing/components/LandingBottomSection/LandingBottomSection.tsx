@@ -6,18 +6,13 @@ export function LandingBottomSection() {
       <div className="landing__bottom-section--left">
         <ul className="landing__bottom-section-list">
           <li className="landing__bottom-section-list-item">
-            <a href="#" className="landing__bottom-section-link">
-              Link 1
+            <a href="#experience" className="landing__bottom-section-link">
+              Experience
             </a>
           </li>
           <li className="landing__bottom-section-list-item">
-            <a href="#" className="landing__bottom-section-link">
-              Link 2
-            </a>
-          </li>
-          <li className="landing__bottom-section-list-item">
-            <a href="#" className="landing__bottom-section-link">
-              Link 3
+            <a href="#contact" className="landing__bottom-section-link">
+              Contact
             </a>
           </li>
         </ul>

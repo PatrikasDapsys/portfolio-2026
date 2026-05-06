@@ -11,7 +11,7 @@ const placeholderDescription =
 
 export function ExperienceSection() {
   return (
-    <section className="experience">
+    <section id="experience" className="experience">
       <h2 className="section-title">
         Experience
       </h2>
