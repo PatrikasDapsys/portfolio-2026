@@ -33,13 +33,19 @@
   $travel-distance: 2000px,
   $color: #fff
 ) {
+  $shadows: starfield-build-shadows($star-count, $travel-distance, $color);
   --starfield-travel-distance: #{$travel-distance};
   width: $star-size;
   height: $star-size;
   position: absolute;
-  inset: 0 auto auto 0;
+  top: 0;
+  left: 0;
+  right: auto;
+  pointer-events: none;
   background: transparent;
-  box-shadow: starfield-build-shadows($star-count, $travel-distance, $color);
+  box-shadow: $shadows;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
   animation: starfield-drift $duration linear infinite;
 
   &::after {
@@ -50,7 +56,7 @@
     width: $star-size;
     height: $star-size;
     background: transparent;
-    box-shadow: starfield-build-shadows($star-count, $travel-distance, $color);
+    box-shadow: $shadows;
   }
 }
 
@@ -65,12 +71,13 @@
     inset: 0;
     overflow: hidden;
     z-index: $z-index;
+    contain: paint;
   }
 
   .starfield-layer-small {
     @include starfield-layer(
       $star-size: 1px,
-      $star-count: 700,
+      $star-count: 250,
       $duration: 50s,
       $travel-distance: $travel-distance,
       $color: $color
@@ -80,7 +87,7 @@
   .starfield-layer-medium {
     @include starfield-layer(
       $star-size: 2px,
-      $star-count: 200,
+      $star-count: 100,
       $duration: 100s,
       $travel-distance: $travel-distance,
       $color: $color
@@ -90,7 +97,7 @@
   .starfield-layer-large {
     @include starfield-layer(
       $star-size: 3px,
-      $star-count: 100,
+      $star-count: 70,
       $duration: 150s,
       $travel-distance: $travel-distance,
       $color: $color
@@ -100,10 +107,19 @@
 
 @keyframes starfield-drift {
   from {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translateY(calc(-1 * var(--starfield-travel-distance)));
+    transform: translate3d(0, calc(-1 * var(--starfield-travel-distance)), 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starfield-layer-small,
+  .starfield-layer-medium,
+  .starfield-layer-large {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
   }
 }
