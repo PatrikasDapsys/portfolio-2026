@@ -9,7 +9,6 @@ function App() {
       <div className="starfield-background" aria-hidden="true">
         <div className="starfield-layer-small" />
         <div className="starfield-layer-medium" />
-        <div className="starfield-layer-large" />
       </div>
       <div className="app-shell__content">
         <LandingSection />

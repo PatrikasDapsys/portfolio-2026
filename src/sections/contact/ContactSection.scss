@@ -9,37 +9,31 @@ $contact-ray-steps: (
     top: -12%,
     right: 10%,
     angle: 39,
-    blur: 100px,
   ),
   sm: (
     top: -12%,
     right: 30%,
     angle: 50,
-    blur: 100px,
   ),
   md: (
     top: -12%,
     right: 26%,
     angle: 54,
-    blur: 100px,
   ),
   lg: (
     top: -12%,
     right: 26%,
     angle: 54,
-    blur: 100px,
   ),
   xl: (
     top: -12%,
     right: 26%,
     angle: 54,
-    blur: 100px,
   ),
   xxl: (
     top: -12%,
     right: 26%,
     angle: 54,
-    blur: 100px,
   ),
 );
 
@@ -53,9 +47,8 @@ $contact-ray-steps: (
 
 .contact__container {
   @include mixins.base-border;
-  @include mixins.base-background-blur;
   @include blurRay.blur-ray-before(
-    $width: 80px,
+    $width: 240px,
     $height: 230%,
     $background: colors.$darkBlue,
     $z-index: zIndex.$ray-z-index,

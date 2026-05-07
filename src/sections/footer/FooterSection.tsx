@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import type { MouseEvent } from 'react'
 import './FooterSection.scss'
 
 const footerLinks = [
@@ -11,10 +12,14 @@ const footerLinks = [
 
 export function FooterSection() {
   const currentYear = new Date().getFullYear()
+  const handleScrollTopClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <footer className="footer">
-      <a className="footer__scroll-top" href="#" aria-label="Back to top">
+      <a className="footer__scroll-top" href="#" aria-label="Back to top" onClick={handleScrollTopClick}>
         <FontAwesomeIcon icon={faAngleUp} size="xs" />
       </a>
 

@@ -7,62 +7,48 @@
 // }
 //
 // Note: `$color` is kept in API for compatibility, but texture stars are pre-baked white.
-$starfield-texture-small: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cg fill='white'%3E%3Ccircle cx='8' cy='14' r='0.3'/%3E%3Ccircle cx='24' cy='68' r='0.5'/%3E%3Ccircle cx='39' cy='121' r='0.5'/%3E%3Ccircle cx='51' cy='202' r='0.5'/%3E%3Ccircle cx='73' cy='35' r='0.5'/%3E%3Ccircle cx='84' cy='156' r='0.5'/%3E%3Ccircle cx='97' cy='220' r='0.5'/%3E%3Ccircle cx='116' cy='78' r='0.5'/%3E%3Ccircle cx='127' cy='13' r='0.5'/%3E%3Ccircle cx='143' cy='187' r='0.5'/%3E%3Ccircle cx='161' cy='54' r='0.5'/%3E%3Ccircle cx='172' cy='96' r='0.5'/%3E%3Ccircle cx='181' cy='240' r='0.5'/%3E%3Ccircle cx='197' cy='143' r='0.5'/%3E%3Ccircle cx='214' cy='33' r='0.5'/%3E%3Ccircle cx='221' cy='207' r='0.5'/%3E%3Ccircle cx='236' cy='114' r='0.5'/%3E%3Ccircle cx='245' cy='170' r='0.5'/%3E%3C/g%3E%3C/svg%3E");
-$starfield-texture-medium: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cg fill='white'%3E%3Ccircle cx='16' cy='44' r='0.5'/%3E%3Ccircle cx='41' cy='173' r='0.67'/%3E%3Ccircle cx='59' cy='93' r='0.67'/%3E%3Ccircle cx='88' cy='214' r='0.67'/%3E%3Ccircle cx='111' cy='21' r='0.67'/%3E%3Ccircle cx='132' cy='141' r='0.67'/%3E%3Ccircle cx='154' cy='67' r='0.67'/%3E%3Ccircle cx='176' cy='226' r='0.67'/%3E%3Ccircle cx='203' cy='103' r='0.67'/%3E%3Ccircle cx='231' cy='32' r='0.67'/%3E%3C/g%3E%3C/svg%3E");
-$starfield-texture-large: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cg fill='white'%3E%3Ccircle cx='34' cy='64' r='0.75'/%3E%3Ccircle cx='78' cy='188' r='0.75'/%3E%3Ccircle cx='125' cy='32' r='0.75'/%3E%3Ccircle cx='163' cy='146' r='0.75'/%3E%3Ccircle cx='221' cy='95' r='0.75'/%3E%3C/g%3E%3C/svg%3E");
+$starfield-texture-small: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cg fill='rgba(255%2C255%2C255%2C0.55)'%3E%3Ccircle cx='8' cy='14' r='0.3'/%3E%3Ccircle cx='24' cy='68' r='0.5'/%3E%3Ccircle cx='39' cy='121' r='0.5'/%3E%3Ccircle cx='51' cy='202' r='0.5'/%3E%3Ccircle cx='73' cy='35' r='0.5'/%3E%3Ccircle cx='84' cy='156' r='0.5'/%3E%3Ccircle cx='97' cy='220' r='0.5'/%3E%3Ccircle cx='116' cy='78' r='0.5'/%3E%3Ccircle cx='127' cy='13' r='0.5'/%3E%3Ccircle cx='143' cy='187' r='0.5'/%3E%3Ccircle cx='161' cy='54' r='0.5'/%3E%3Ccircle cx='172' cy='96' r='0.5'/%3E%3Ccircle cx='181' cy='240' r='0.5'/%3E%3Ccircle cx='197' cy='143' r='0.5'/%3E%3Ccircle cx='214' cy='33' r='0.5'/%3E%3Ccircle cx='221' cy='207' r='0.5'/%3E%3Ccircle cx='236' cy='114' r='0.5'/%3E%3Ccircle cx='245' cy='170' r='0.5'/%3E%3C/g%3E%3C/svg%3E");
+$starfield-texture-medium: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cg fill='rgba(255%2C255%2C255%2C0.7)'%3E%3Ccircle cx='16' cy='44' r='0.5'/%3E%3Ccircle cx='41' cy='173' r='0.67'/%3E%3Ccircle cx='59' cy='93' r='0.67'/%3E%3Ccircle cx='88' cy='214' r='0.67'/%3E%3Ccircle cx='111' cy='21' r='0.67'/%3E%3Ccircle cx='132' cy='141' r='0.67'/%3E%3Ccircle cx='154' cy='67' r='0.67'/%3E%3Ccircle cx='176' cy='226' r='0.67'/%3E%3Ccircle cx='203' cy='103' r='0.67'/%3E%3Ccircle cx='231' cy='32' r='0.67'/%3E%3C/g%3E%3C/svg%3E");
 
 @mixin starfield-container($overflow: hidden) {
-  position: relative;
-  overflow: $overflow;
+  // Intentionally kept as API-compatible no-op.
 }
 
 @mixin starfield-layer(
   $duration,
   $texture,
   $tile-size,
-  $travel-distance: 2000px,
+  $animation-name,
   $opacity: 1
 ) {
-  --starfield-travel-distance: #{$travel-distance};
-  width: 100%;
-  height: var(--starfield-travel-distance);
   position: absolute;
-  inset: 0 0 auto 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: calc(100vh + #{$tile-size});
   pointer-events: none;
   opacity: $opacity;
   background-image: $texture;
   background-size: $tile-size $tile-size;
   background-repeat: repeat;
-  background-position: 0 0;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  animation: starfield-drift $duration linear infinite;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: var(--starfield-travel-distance);
-    inset-inline: 0;
-    height: var(--starfield-travel-distance);
-    background-image: inherit;
-    background-size: inherit;
-    background-repeat: inherit;
-    background-position: inherit;
-  }
+  transform: translateZ(0);
+  animation: $animation-name $duration linear infinite;
 }
 
 @mixin starfield-default-background(
+  // Kept for API compatibility with existing call sites; no longer needed.
   $travel-distance: 2000px,
+  // Kept in API for compatibility, but texture stars are pre-baked white.
   $color: #fff,
   $z-index: 0
 ) {
   .starfield-background {
     pointer-events: none;
-    position: absolute;
+    position: fixed;
     inset: 0;
     overflow: hidden;
     z-index: $z-index;
-    contain: paint;
+    contain: layout paint;
   }
 
   .starfield-layer-small {
@@ -70,8 +56,7 @@ $starfield-texture-large: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
       $duration: 50s,
       $texture: $starfield-texture-small,
       $tile-size: 620px,
-      $travel-distance: $travel-distance,
-      $opacity: 0.55
+      $animation-name: starfield-drift-small
     );
   }
 
@@ -80,36 +65,34 @@ $starfield-texture-large: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
       $duration: 100s,
       $texture: $starfield-texture-medium,
       $tile-size: 860px,
-      $travel-distance: $travel-distance,
-      $opacity: 0.7
-    );
-  }
-
-  .starfield-layer-large {
-    @include starfield-layer(
-      $duration: 150s,
-      $texture: $starfield-texture-large,
-      $tile-size: 1180px,
-      $travel-distance: $travel-distance,
-      $opacity: 0.85
+      $animation-name: starfield-drift-medium
     );
   }
 }
 
-@keyframes starfield-drift {
+@keyframes starfield-drift-small {
   from {
     transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translate3d(0, calc(-1 * var(--starfield-travel-distance)), 0);
+    transform: translate3d(0, -620px, 0);
+  }
+}
+
+@keyframes starfield-drift-medium {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -860px, 0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .starfield-layer-small,
-  .starfield-layer-medium,
-  .starfield-layer-large {
+  .starfield-layer-medium {
     animation-duration: 0.01ms;
     animation-iteration-count: 1;
   }

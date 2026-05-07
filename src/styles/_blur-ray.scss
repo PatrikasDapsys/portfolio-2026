@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'sass:map';
 @use 'sass:math';
 @use 'sass:meta';
@@ -12,18 +13,6 @@ $blur-ray-breakpoint-min-widths: (
   xxl: breakpoints.$breakpoint-xxl,
 );
 
-@keyframes blur-ray-sway {
-  0% {
-    transform: rotate(calc(var(--blur-ray-base-angle) + 2deg));
-    scale: 1.2;
-  }
-
-  100% {
-    transform: rotate(calc(var(--blur-ray-base-angle) - 2deg));
-    scale: 1;
-  }
-}
-
 @function blur-ray-resolve-angle($angle) {
   @if meta.type-of($angle) == 'number' {
     @if math.is-unitless($angle) {
@@ -36,8 +25,24 @@ $blur-ray-breakpoint-min-widths: (
   @return string.unquote($angle);
 }
 
-/// Blurred diagonal strip as `::before`. `$steps` must include `base`, then optional `sm` … `xxl`.
-/// Each step map: `top`, `right`, `angle` (unitless deg, angle value, or string), `blur` (length).
+/// Soft diagonal strip (no `filter: blur`) — horizontal alpha gradient.
+@function blur-ray-soft-fill($peak-color) {
+  $transparent: color.change($peak-color, $alpha: 0, $space: rgb);
+  $shoulder: color.change($peak-color, $alpha: 0.15, $space: rgb);
+  $center: color.change($peak-color, $alpha: 0.3, $space: rgb);
+
+  @return linear-gradient(
+    90deg,
+    $transparent 0%,
+    $shoulder 25%,
+    $center 50%,
+    $shoulder 75%,
+    $transparent 100%
+  );
+}
+
+/// Diagonal glow as `::before`. `$steps` must include `base`, then optional `sm` … `xxl`.
+/// Each step map: `top`, `right`, `angle` (unitless deg, angle value, or string).
 @mixin blur-ray-before(
   $width,
   $height,
@@ -59,13 +64,10 @@ $blur-ray-breakpoint-min-widths: (
         top: map.get($props, top);
         right: map.get($props, right);
         transform-origin: $transform-origin;
-        --blur-ray-base-angle: #{blur-ray-resolve-angle(map.get($props, angle))};
-        transform: rotate(calc(var(--blur-ray-base-angle) + 1deg));
-        animation: blur-ray-sway 2s linear infinite alternate;
+        transform: rotate(blur-ray-resolve-angle(map.get($props, angle)));
         width: $width;
         height: $height;
-        background: $background;
-        filter: blur(map.get($props, blur));
+        background: blur-ray-soft-fill($background);
       }
     } @else {
       $min: map.get($blur-ray-breakpoint-min-widths, $bp);
@@ -78,8 +80,7 @@ $blur-ray-breakpoint-min-widths: (
         &::before {
           top: map.get($props, top);
           right: map.get($props, right);
-          --blur-ray-base-angle: #{blur-ray-resolve-angle(map.get($props, angle))};
-          filter: blur(map.get($props, blur));
+          transform: rotate(blur-ray-resolve-angle(map.get($props, angle)));
         }
       }
     }

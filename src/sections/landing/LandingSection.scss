@@ -13,37 +13,31 @@ $landing-ray-steps: (
     top: 10%,
     right: -36%,
     angle: 16,
-    blur: 48px,
   ),
   sm: (
     top: 10%,
     right: -36%,
     angle: 36,
-    blur: 48px,
   ),
   md: (
     top: 8%,
     right: -30%,
     angle: 35,
-    blur: 62px,
   ),
   lg: (
     top: 7%,
     right: -26%,
     angle: 34,
-    blur: 74px,
   ),
   xl: (
     top: 6%,
     right: -24%,
     angle: 33,
-    blur: 82px,
   ),
   xxl: (
     top: 5%,
     right: -22%,
     angle: 33,
-    blur: 90px,
   ),
 );
 
@@ -53,7 +47,6 @@ $landing-ray-steps: (
 
 .landing__container {
   @include mixins.base-border;
-  @include mixins.base-background-blur;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -72,7 +65,7 @@ $landing-ray-steps: (
   }
 
   @include blurRay.blur-ray-before(
-    $width: 100px,
+    $width: 300px,
     $height: 230%,
     $background: colors.$darkBlue,
     $z-index: zIndex.$ray-z-index,
