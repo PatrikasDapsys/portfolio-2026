@@ -53,6 +53,7 @@ $landing-ray-steps: (
   min-height: calc(100vh - $section-margin * 2);
   margin: $section-margin;
   padding: $section-padding;
+  transform: translateZ(0); // Promote to its own composited layer.
 
   & > * {
     z-index: zIndex.$layer-1;

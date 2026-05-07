@@ -66,6 +66,7 @@ $timeline-shadow:
     border: $line-thickness solid colors.$baseDarkText;
     border-radius: 50%;
     box-shadow: $timeline-shadow;
+    transform: translateZ(0); // Keep glow cached on a composited layer.
   }
 
   &__bottom {

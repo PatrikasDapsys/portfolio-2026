@@ -64,6 +64,9 @@ $experience-ray-steps: (
   max-width: 800px;
   margin-top: $container-margin-top;
   padding: $container-padding-base;
+  transform: translateZ(0); // Promote to its own composited layer.
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
 
   @media (min-width: breakpoints.$breakpoint-sm) {
     padding: $container-padding-sm;

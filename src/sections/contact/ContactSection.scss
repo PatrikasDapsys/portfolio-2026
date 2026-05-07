@@ -63,6 +63,9 @@ $contact-ray-steps: (
   margin: 0 auto;
   margin-top: 32px;
   padding: 24px 16px 28px;
+  transform: translateZ(0); // Promote to its own composited layer.
+  content-visibility: auto;
+  contain-intrinsic-size: 980px;
 
   @media (min-width: breakpoints.$breakpoint-sm) {
     padding: 36px 48px 40px;
