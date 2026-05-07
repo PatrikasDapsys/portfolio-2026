@@ -1,5 +1,6 @@
 @use './colors' as colors;
 @use './breakpoints' as breakpoints;
+@use './starfield' as starfield;
 
 // Base reset
 
@@ -24,6 +25,21 @@ body {
   color: colors.$baseText;
   background-color: colors.$baseBackground;
   scroll-behavior: smooth;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.app-shell {
+  @include starfield.starfield-container();
+  @include starfield.starfield-default-background($z-index: 0);
+  min-height: 100vh;
+}
+
+.app-shell__content {
+  position: relative;
+  z-index: 1;
 }
 
 // Element defaults

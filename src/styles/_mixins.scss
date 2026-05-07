@@ -3,3 +3,7 @@
 @mixin base-border {
   border: 1px solid colors.$baseText;
 }
+
+@mixin base-background-blur {
+  backdrop-filter: blur(5px);
+}

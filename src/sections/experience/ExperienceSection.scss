@@ -57,6 +57,7 @@ $experience-ray-steps: (
 
 .experience__container {
   @include mixins.base-border;
+  @include mixins.base-background-blur;
   @include blurRay.blur-ray-before(
     $width: 80px,
     $height: 230%,

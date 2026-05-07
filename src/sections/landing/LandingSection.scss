@@ -53,6 +53,7 @@ $landing-ray-steps: (
 
 .landing__container {
   @include mixins.base-border;
+  @include mixins.base-background-blur;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
