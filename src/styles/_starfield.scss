@@ -4,8 +4,7 @@
 // .hero {
 //   @include starfield.starfield-default-background($z-index: 0);
 // }
-$starfield-texture-small: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cg fill='rgba(255%2C255%2C255%2C0.55)'%3E%3Ccircle cx='8' cy='14' r='0.3'/%3E%3Ccircle cx='24' cy='68' r='0.5'/%3E%3Ccircle cx='39' cy='121' r='0.5'/%3E%3Ccircle cx='51' cy='202' r='0.5'/%3E%3Ccircle cx='73' cy='35' r='0.5'/%3E%3Ccircle cx='84' cy='156' r='0.5'/%3E%3Ccircle cx='97' cy='220' r='0.5'/%3E%3Ccircle cx='116' cy='78' r='0.5'/%3E%3Ccircle cx='127' cy='13' r='0.5'/%3E%3Ccircle cx='143' cy='187' r='0.5'/%3E%3Ccircle cx='161' cy='54' r='0.5'/%3E%3Ccircle cx='172' cy='96' r='0.5'/%3E%3Ccircle cx='181' cy='240' r='0.5'/%3E%3Ccircle cx='197' cy='143' r='0.5'/%3E%3Ccircle cx='214' cy='33' r='0.5'/%3E%3Ccircle cx='221' cy='207' r='0.5'/%3E%3Ccircle cx='236' cy='114' r='0.5'/%3E%3Ccircle cx='245' cy='170' r='0.5'/%3E%3C/g%3E%3C/svg%3E");
-$starfield-texture-medium: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cg fill='rgba(255%2C255%2C255%2C0.7)'%3E%3Ccircle cx='16' cy='44' r='0.5'/%3E%3Ccircle cx='41' cy='173' r='0.67'/%3E%3Ccircle cx='59' cy='93' r='0.67'/%3E%3Ccircle cx='88' cy='214' r='0.67'/%3E%3Ccircle cx='111' cy='21' r='0.67'/%3E%3Ccircle cx='132' cy='141' r='0.67'/%3E%3Ccircle cx='154' cy='67' r='0.67'/%3E%3Ccircle cx='176' cy='226' r='0.67'/%3E%3Ccircle cx='203' cy='103' r='0.67'/%3E%3Ccircle cx='231' cy='32' r='0.67'/%3E%3C/g%3E%3C/svg%3E");
+$starfield-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cg fill='rgba(255%2C255%2C255%2C0.55)'%3E%3Ccircle cx='8' cy='14' r='0.5'/%3E%3Ccircle cx='24' cy='68' r='0.5'/%3E%3Ccircle cx='39' cy='121' r='0.5'/%3E%3Ccircle cx='51' cy='202' r='0.5'/%3E%3Ccircle cx='73' cy='35' r='0.5'/%3E%3Ccircle cx='84' cy='156' r='0.5'/%3E%3Ccircle cx='97' cy='220' r='0.5'/%3E%3Ccircle cx='116' cy='78' r='0.5'/%3E%3Ccircle cx='127' cy='13' r='0.5'/%3E%3Ccircle cx='143' cy='187' r='0.5'/%3E%3Ccircle cx='161' cy='54' r='0.5'/%3E%3Ccircle cx='172' cy='96' r='0.5'/%3E%3Ccircle cx='181' cy='240' r='0.5'/%3E%3Ccircle cx='197' cy='143' r='0.5'/%3E%3Ccircle cx='214' cy='33' r='0.5'/%3E%3Ccircle cx='221' cy='207' r='0.5'/%3E%3Ccircle cx='236' cy='114' r='0.5'/%3E%3Ccircle cx='245' cy='170' r='0.5'/%3E%3C/g%3E%3C/svg%3E");
 
 @mixin starfield-layer(
   $duration,
@@ -40,18 +39,18 @@ $starfield-texture-medium: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 
   .starfield-layer-small {
     @include starfield-layer(
-      $duration: 50s,
-      $texture: $starfield-texture-small,
-      $tile-size: 620px,
+      $duration: 7s,
+      $texture: $starfield-texture,
+      $tile-size: 250px,
       $animation-name: starfield-drift-small
     );
   }
 
   .starfield-layer-medium {
     @include starfield-layer(
-      $duration: 100s,
-      $texture: $starfield-texture-medium,
-      $tile-size: 860px,
+      $duration: 20s,
+      $texture: $starfield-texture,
+      $tile-size: 900px,
       $animation-name: starfield-drift-medium
     );
   }
@@ -63,7 +62,7 @@ $starfield-texture-medium: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
   }
 
   to {
-    transform: translate3d(0, -620px, 0);
+    transform: translate3d(0, -250px, 0);
   }
 }
 
@@ -73,7 +72,7 @@ $starfield-texture-medium: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
   }
 
   to {
-    transform: translate3d(0, -860px, 0);
+    transform: translate3d(0, -900px, 0);
   }
 }
 
