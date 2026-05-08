@@ -5,9 +5,6 @@ $tag-x-offset: -80px;
 $tag-y-offset: 80px;
 $tag-x-sm-offset: -72px;
 $tag-y-sm-offset: 80px;
-$theme-switcher-x-offset: -64px;
-$theme-switcher-y-offset: 78px;
-$theme-switcher-x-sm-offset: -70px;
 
 .landing {
   &__tag {
@@ -38,13 +35,4 @@ $theme-switcher-x-sm-offset: -70px;
     }
   }
 
-  .theme-switcher {
-    position: absolute;
-    bottom: $theme-switcher-y-offset;
-    left: $theme-switcher-x-offset;
-
-    @media (min-width: breakpoints.$breakpoint-sm) {
-      left: $theme-switcher-x-sm-offset;
-    }
-  }
 } 
