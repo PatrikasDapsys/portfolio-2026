@@ -32,7 +32,7 @@ $starfield-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000
 
   .starfield-layer-small {
     @include starfield-layer(
-      $duration: 7s,
+      $duration: 3s,
       $texture: $starfield-texture,
       $tile-size: 250px,
       $animation-name: starfield-drift-small
