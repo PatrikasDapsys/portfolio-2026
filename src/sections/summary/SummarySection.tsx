@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
-import './SummarySection.scss'
-import portfolioPhoto from '../../assets/portfolioPhoto.webp'
+import { useEffect, useRef, useState } from 'react';
+import './SummarySection.scss';
+import portfolioPhoto from '../../assets/portfolioPhoto.webp';
 
-const PORTFOLIO_PHOTO_WIDTH = 902
-const PORTFOLIO_PHOTO_HEIGHT = 800
+const PORTFOLIO_PHOTO_WIDTH = 902;
+const PORTFOLIO_PHOTO_HEIGHT = 800;
 
 export function SummarySection() {
   const imageRef = useRef<HTMLImageElement>(null);
@@ -16,9 +16,7 @@ export function SummarySection() {
 
   return (
     <section id="summary" className="summary">
-      <h2 className="section-title">
-        Summary
-      </h2>
+      <h2 className="section-title">Summary</h2>
       <div className="summary__container">
         <div
           className={`summary__image-wrapper${imageLoaded ? ' summary__image-wrapper--loaded' : ''}`}
@@ -40,25 +38,22 @@ export function SummarySection() {
         <div className="summary__text">
           <h3 className="summary__text-title">About Me</h3>
           <p>
-          Frontend Developer specializing in Vue 3, React, and TypeScript,
-          with experience building scalable, high-performance web applications
-          in international Agile teams.
-          <br />
-          <br />
-          Focused on clean architecture, responsive UI
-          development, and performance optimization, including improving page speed
-          and achieving perfect Lighthouse SEO scores.
-          <br />
-          <br />
-          Experienced in integrating
-          frontend systems with Laravel backends and using AI-powered tools to
-          improve development workflows and code quality.
-          <br />
-          <br />
-          Outside of development, I enjoy sports and paramotoring.
+            Frontend Developer specializing in Vue 3, React, and TypeScript, with experience
+            building scalable, high-performance web applications in international Agile teams.
+            <br />
+            <br />
+            Focused on clean architecture, responsive UI development, and performance optimization,
+            including improving page speed and achieving perfect Lighthouse SEO scores.
+            <br />
+            <br />
+            Experienced in integrating frontend systems with Laravel backends and using AI-powered
+            tools to improve development workflows and code quality.
+            <br />
+            <br />
+            Outside of development, I enjoy sports and paramotoring.
           </p>
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-import { ExperienceSection } from './sections/experience/ExperienceSection'
-import { LandingSection } from './sections/landing/LandingSection'
-import { SummarySection } from './sections/summary/SummarySection'
-import { ContactSection } from './sections/contact/ContactSection'
-import { FooterSection } from './sections/footer/FooterSection'
+import { ExperienceSection } from './sections/experience/ExperienceSection';
+import { LandingSection } from './sections/landing/LandingSection';
+import { SummarySection } from './sections/summary/SummarySection';
+import { ContactSection } from './sections/contact/ContactSection';
+import { FooterSection } from './sections/footer/FooterSection';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <FooterSection />
       </div>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;

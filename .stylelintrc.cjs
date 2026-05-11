@@ -12,4 +12,4 @@ module.exports = {
     'scss/dollar-variable-empty-line-before': null,
     'rule-empty-line-before': null,
   },
-}
+};

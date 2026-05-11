@@ -1,11 +1,11 @@
-import './ExperienceEntry.scss'
+import './ExperienceEntry.scss';
 
 type ExperienceEntryProps = {
-  title: string
-  date: string
-  description: string
-  reversed?: boolean
-}
+  title: string;
+  date: string;
+  description: string;
+  reversed?: boolean;
+};
 
 export function ExperienceEntry({
   title,
@@ -13,7 +13,7 @@ export function ExperienceEntry({
   description,
   reversed = false,
 }: ExperienceEntryProps) {
-  const className = `experience-entry${reversed ? ' experience-entry--reversed' : ''}`
+  const className = `experience-entry${reversed ? ' experience-entry--reversed' : ''}`;
 
   return (
     <article className={className}>
@@ -27,5 +27,5 @@ export function ExperienceEntry({
       </div>
       <div className="experience-entry__bottom">{description}</div>
     </article>
-  )
+  );
 }

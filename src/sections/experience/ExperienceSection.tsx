@@ -1,20 +1,18 @@
-import { ExperienceEntry } from './components/ExperienceEntry/ExperienceEntry'
-import './ExperienceSection.scss'
+import { ExperienceEntry } from './components/ExperienceEntry/ExperienceEntry';
+import './ExperienceSection.scss';
 
 const placeholderDescription =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. '
-  + 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. '
-  + 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. '
-  + 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. '
-  + 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. '
-  + 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.'
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ' +
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ' +
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ' +
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ' +
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ' +
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.';
 
 export function ExperienceSection() {
   return (
     <section id="experience" className="experience">
-      <h2 className="section-title">
-        Experience
-      </h2>
+      <h2 className="section-title">Experience</h2>
       <div className="experience__container">
         <ExperienceEntry
           title="Web Developer"
@@ -29,5 +27,5 @@ export function ExperienceSection() {
         />
       </div>
     </section>
-  )
+  );
 }

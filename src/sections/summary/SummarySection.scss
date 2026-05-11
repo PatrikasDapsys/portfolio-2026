@@ -81,14 +81,10 @@ $summary-ray-steps: (
   border-radius: 12px;
   width: 100%;
   overflow: hidden;
-  background: linear-gradient(
-    160deg,
-    rgba(colors.$baseWhite, 0.02),
-    rgba(colors.$lightBlue, 0.08)
-    );
+  background: linear-gradient(160deg, rgba(colors.$baseWhite, 0.02), rgba(colors.$lightBlue, 0.08));
   z-index: zIndex.$layer-1;
   flex: 0 0 auto;
-  
+
   @media (min-width: breakpoints.$breakpoint-md) {
     max-width: 40%;
     min-width: 300px;

@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import { ContactField } from './components/ContactField/ContactField'
-import './ContactForm.scss'
+import { useState } from 'react';
+import { ContactField } from './components/ContactField/ContactField';
+import './ContactForm.scss';
 
 export function ContactForm() {
-  const [email, setEmail] = useState('')
-  const [title, setTitle] = useState('')
-  const [message, setMessage] = useState('')
+  const [email, setEmail] = useState('');
+  const [title, setTitle] = useState('');
+  const [message, setMessage] = useState('');
 
   return (
     <form className="contact__form" action="#" method="post" noValidate>
@@ -45,5 +45,5 @@ export function ContactForm() {
         Submit
       </button>
     </form>
-  )
+  );
 }

@@ -18,7 +18,7 @@ $tag-y-sm-offset: 80px;
       top: $tag-y-offset;
       left: $tag-x-offset;
       transform: rotate(270deg);
-      
+
       @media (min-width: breakpoints.$breakpoint-sm) {
         left: $tag-x-sm-offset;
       }
@@ -34,5 +34,4 @@ $tag-y-sm-offset: 80px;
       }
     }
   }
-
-} 
+}

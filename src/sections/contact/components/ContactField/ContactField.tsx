@@ -1,44 +1,37 @@
-import type { ChangeEventHandler, InputHTMLAttributes, TextareaHTMLAttributes } from 'react'
-import './ContactField.scss'
+import type { ChangeEventHandler, InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
+import './ContactField.scss';
 
 type BaseContactFieldProps = {
-  id: string
-  name: string
-  label: string
-  value: string
-  onChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
-  fieldClassName?: string
-}
+  id: string;
+  name: string;
+  label: string;
+  value: string;
+  onChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  fieldClassName?: string;
+};
 
 type InputContactFieldProps = BaseContactFieldProps & {
-  as?: 'input'
+  as?: 'input';
   inputProps?: Omit<
     InputHTMLAttributes<HTMLInputElement>,
     'id' | 'name' | 'value' | 'onChange' | 'className' | 'placeholder'
-  >
-}
+  >;
+};
 
 type TextareaContactFieldProps = BaseContactFieldProps & {
-  as: 'textarea'
+  as: 'textarea';
   textareaProps?: Omit<
     TextareaHTMLAttributes<HTMLTextAreaElement>,
     'id' | 'name' | 'value' | 'onChange' | 'className' | 'placeholder'
-  >
-}
+  >;
+};
 
-type ContactFieldProps = InputContactFieldProps | TextareaContactFieldProps
+type ContactFieldProps = InputContactFieldProps | TextareaContactFieldProps;
 
 export function ContactField(props: ContactFieldProps) {
-  const {
-    id,
-    name,
-    label,
-    value,
-    onChange,
-    fieldClassName,
-  } = props
+  const { id, name, label, value, onChange, fieldClassName } = props;
 
-  const className = fieldClassName ? `contact__field ${fieldClassName}` : 'contact__field'
+  const className = fieldClassName ? `contact__field ${fieldClassName}` : 'contact__field';
 
   return (
     <div className={className}>
@@ -66,7 +59,9 @@ export function ContactField(props: ContactFieldProps) {
           {...props.inputProps}
         />
       )}
-      <label className="contact__label" htmlFor={id}>{label}</label>
+      <label className="contact__label" htmlFor={id}>
+        {label}
+      </label>
     </div>
-  )
+  );
 }

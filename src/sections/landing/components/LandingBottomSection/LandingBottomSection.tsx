@@ -1,4 +1,4 @@
-import './LandingBottomSection.scss'
+import './LandingBottomSection.scss';
 
 export function LandingBottomSection() {
   return (
@@ -22,5 +22,5 @@ export function LandingBottomSection() {
         software engineer
       </h2>
     </div>
-  )
+  );
 }
