@@ -1,4 +1,13 @@
 import './LandingBottomSection.scss';
+import type { MouseEvent } from 'react';
+import { scrollToSectionById } from '../../../../utils/scrollToSection';
+
+function handleInPageNavClick(event: MouseEvent<HTMLAnchorElement>) {
+  const href = event.currentTarget.getAttribute('href');
+  if (!href?.startsWith('#')) return;
+  event.preventDefault();
+  scrollToSectionById(href.slice(1));
+}
 
 export function LandingBottomSection() {
   return (
@@ -6,12 +15,29 @@ export function LandingBottomSection() {
       <div className="landing__bottom-section--left">
         <ul className="landing__bottom-section-list">
           <li className="landing__bottom-section-list-item">
-            <a href="#experience" className="landing__bottom-section-link">
+            <a
+              href="#summary"
+              className="landing__bottom-section-link"
+              onClick={handleInPageNavClick}
+            >
+              Summary
+            </a>
+          </li>
+          <li className="landing__bottom-section-list-item">
+            <a
+              href="#experience"
+              className="landing__bottom-section-link"
+              onClick={handleInPageNavClick}
+            >
               Experience
             </a>
           </li>
           <li className="landing__bottom-section-list-item">
-            <a href="#contact" className="landing__bottom-section-link">
+            <a
+              href="#contact"
+              className="landing__bottom-section-link"
+              onClick={handleInPageNavClick}
+            >
               Contact
             </a>
           </li>

@@ -19,7 +19,7 @@ export function LandingTopSection() {
           <LandingSocialLink
             icon={faEnvelope}
             label="Email"
-            link="mailto:patrikas.dapsys@gmail.com"
+            link="contact"
           />
           <LandingSocialLink
             icon={faGithub}
@@ -34,9 +34,8 @@ export function LandingTopSection() {
           <LandingSocialLink
             icon={faFileLines}
             label="Resume"
-            link="https://www.linkedin.com/in/patrikas-dapsys/"
+            link="/documents/patrikas-dapsys-cv.pdf"
           />
-          {/* TODO: Add resume link/link to contact page */}
         </ul>
       </div>
     </div>
