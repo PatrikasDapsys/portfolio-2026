@@ -1,13 +1,5 @@
 import './LandingBottomSection.scss';
-import type { MouseEvent } from 'react';
-import { scrollToSectionById } from '../../../../utils/scrollToSection';
-
-function handleInPageNavClick(event: MouseEvent<HTMLAnchorElement>) {
-  const href = event.currentTarget.getAttribute('href');
-  if (!href?.startsWith('#')) return;
-  event.preventDefault();
-  scrollToSectionById(href.slice(1));
-}
+import { handleInPageNavClick } from '../../../../utils/scrollToSection';
 
 export function LandingBottomSection() {
   return (

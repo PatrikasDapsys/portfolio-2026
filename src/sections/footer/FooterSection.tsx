@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import type { MouseEvent } from 'react';
+import { handleInPageNavClick, opensInNewTab } from '../../utils/scrollToSection';
 import './FooterSection.scss';
 
 const footerLinks = [
   { label: 'GitHub', href: 'https://github.com/patrikasdapsys' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/patrikas-dapsys/' },
-  { label: 'Resume', href: 'https://www.linkedin.com/in/patrikas-dapsys/' },
+  { label: 'Resume', href: '/documents/patrikas-dapsys-cv.pdf' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -34,8 +35,9 @@ export function FooterSection() {
             className="footer__link"
             key={link.label}
             href={link.href}
-            target={link.href.startsWith('http') ? '_blank' : undefined}
-            rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+            target={opensInNewTab(link.href) ? '_blank' : undefined}
+            rel={opensInNewTab(link.href) ? 'noopener noreferrer' : undefined}
+            onClick={link.href.startsWith('#') ? handleInPageNavClick : undefined}
           >
             {link.label}
           </a>
