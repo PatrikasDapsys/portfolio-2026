@@ -1,0 +1,166 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/breakpoints' as breakpoints;
+@use '../../styles/mixins' as mixins;
+@use '../../styles/blur-ray' as blurRay;
+@use '../../styles/z-index' as zIndex;
+
+$summary-ray-steps: (
+  base: (
+    top: -12%,
+    right: 10%,
+    angle: 39,
+  ),
+  sm: (
+    top: -12%,
+    right: 30%,
+    angle: 50,
+  ),
+  md: (
+    top: -12%,
+    right: 26%,
+    angle: 54,
+  ),
+  lg: (
+    top: -12%,
+    right: 26%,
+    angle: 54,
+  ),
+  xl: (
+    top: -12%,
+    right: 26%,
+    angle: 54,
+  ),
+  xxl: (
+    top: -12%,
+    right: 26%,
+    angle: 54,
+  ),
+);
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 32px;
+}
+
+.summary__container {
+  @include mixins.base-border;
+  @include blurRay.blur-ray-before(
+    $width: 240px,
+    $height: 230%,
+    $background: colors.$darkBlue,
+    $z-index: zIndex.$ray-z-index,
+    $steps: $summary-ray-steps
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 980px;
+  margin: 32px auto 0;
+  padding: 48px 32px;
+
+  @media (min-width: breakpoints.$breakpoint-sm) {
+  }
+
+  @media (min-width: breakpoints.$breakpoint-md) {
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+  }
+}
+
+.summary__image-wrapper {
+  position: relative;
+  border: 1px solid rgba(colors.$baseWhite, 0.15);
+  max-width: 400px;
+  aspect-ratio: 451 / 400; // Image aspect ratio
+  border-radius: 12px;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    rgba(colors.$baseWhite, 0.02),
+    rgba(colors.$lightBlue, 0.08)
+    );
+  z-index: zIndex.$layer-1;
+  flex: 0 0 auto;
+  
+  @media (min-width: breakpoints.$breakpoint-md) {
+    max-width: 40%;
+    min-width: 300px;
+  }
+}
+
+@keyframes summary-skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.summary__image-skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: zIndex.$layer-2;
+  background: linear-gradient(
+    110deg,
+    rgba(colors.$lightBlue, 0.04) 0%,
+    rgba(colors.$lightBlue, 0.12) 45%,
+    rgba(colors.$lightBlue, 0.1) 55%,
+    rgba(colors.$lightBlue, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: summary-skeleton-shimmer 1.4s ease-in-out infinite;
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.summary__image-wrapper--loaded .summary__image-skeleton {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.summary__image {
+  position: relative;
+  z-index: zIndex.$layer-1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.summary__image-wrapper--loaded .summary__image {
+  opacity: 1;
+}
+
+.summary__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: colors.$baseText;
+  z-index: zIndex.$layer-1;
+  flex: 1 1 auto;
+  min-width: 0;
+
+  p {
+    font-size: 18px;
+    line-height: 1.45;
+  }
+}
+
+.summary__text-title {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}

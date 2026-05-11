@@ -1,5 +1,6 @@
 import { ExperienceSection } from './sections/experience/ExperienceSection'
 import { LandingSection } from './sections/landing/LandingSection'
+import { SummarySection } from './sections/summary/SummarySection'
 import { ContactSection } from './sections/contact/ContactSection'
 import { FooterSection } from './sections/footer/FooterSection'
 
@@ -12,6 +13,7 @@ function App() {
       </div>
       <div className="app-shell__content">
         <LandingSection />
+        <SummarySection />
         <ExperienceSection />
         <ContactSection />
         <FooterSection />
