@@ -1,21 +1,111 @@
 import { useState } from 'react';
+import type { FormEvent } from 'react';
 import { ContactField } from './components/ContactField/ContactField';
+import { useToast } from '../../components/Toast/useToast';
 import './ContactForm.scss';
 
+type FieldErrors = {
+  email?: string;
+  title?: string;
+  message?: string;
+};
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MIN_MESSAGE_LENGTH = 10;
+const MAX_MAILTO_LENGTH = 2000;
+
+function validate(email: string, title: string, message: string): FieldErrors {
+  const errors: FieldErrors = {};
+
+  const trimmedEmail = email.trim();
+  if (!trimmedEmail) {
+    errors.email = 'Email is required';
+  } else if (!EMAIL_PATTERN.test(trimmedEmail)) {
+    errors.email = 'Enter a valid email address';
+  }
+
+  if (!title.trim()) {
+    errors.title = 'Title is required';
+  }
+
+  const trimmedMessage = message.trim();
+  if (!trimmedMessage) {
+    errors.message = 'Message is required';
+  } else if (trimmedMessage.length < MIN_MESSAGE_LENGTH) {
+    errors.message = `Message must be at least ${MIN_MESSAGE_LENGTH} characters`;
+  }
+
+  return errors;
+}
+
 export function ContactForm() {
+  const { showToast } = useToast();
   const [email, setEmail] = useState('');
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+
+  const clearError = (field: keyof FieldErrors) => {
+    setFieldErrors((prev) => {
+      if (!prev[field]) return prev;
+      const next = { ...prev };
+      delete next[field];
+      return next;
+    });
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const errors = validate(email, title, message);
+    setFieldErrors(errors);
+    if (Object.keys(errors).length > 0) return;
+
+    const recipient = import.meta.env.VITE_CONTACT_EMAIL;
+    if (!recipient) {
+      showToast({
+        variant: 'error',
+        message: 'Contact form is not configured. Please try again later.',
+      });
+      return;
+    }
+
+    const trimmedEmail = email.trim();
+    const trimmedTitle = title.trim();
+    const trimmedMessage = message.trim();
+    const body = `From: ${trimmedEmail}\n\n${trimmedMessage}`;
+    const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(
+      trimmedTitle,
+    )}&body=${encodeURIComponent(body)}`;
+
+    if (mailtoUrl.length > MAX_MAILTO_LENGTH) {
+      showToast({
+        variant: 'error',
+        message: 'Message is too long to open in your email app. Please shorten it.',
+      });
+      return;
+    }
+
+    window.location.href = mailtoUrl;
+    showToast({
+      variant: 'success',
+      message: 'Your default email app should open with a draft ready to send.',
+    });
+  };
 
   return (
-    <form className="contact__form" action="#" method="post" noValidate>
+    <form className="contact__form" onSubmit={handleSubmit} noValidate>
       <div className="contact__field-container contact__field-container--email">
         <ContactField
           id="contact-email"
           name="email"
           label="Email"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(event) => {
+            setEmail(event.target.value);
+            clearError('email');
+          }}
+          error={fieldErrors.email}
           inputProps={{ type: 'email', autoComplete: 'email', maxLength: 60 }}
         />
       </div>
@@ -25,7 +115,11 @@ export function ContactForm() {
           name="title"
           label="Title"
           value={title}
-          onChange={(event) => setTitle(event.target.value)}
+          onChange={(event) => {
+            setTitle(event.target.value);
+            clearError('title');
+          }}
+          error={fieldErrors.title}
           inputProps={{ type: 'text', maxLength: 70 }}
         />
       </div>
@@ -36,13 +130,17 @@ export function ContactForm() {
           name="message"
           label="Message"
           value={message}
-          onChange={(event) => setMessage(event.target.value)}
+          onChange={(event) => {
+            setMessage(event.target.value);
+            clearError('message');
+          }}
+          error={fieldErrors.message}
           fieldClassName="contact__field--message"
           textareaProps={{ rows: 4, maxLength: 1000 }}
         />
       </div>
-      <button className="contact__submit" type="button">
-        Submit
+      <button className="contact__submit" type="submit">
+        Open in email app
       </button>
     </form>
   );

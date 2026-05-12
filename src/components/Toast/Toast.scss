@@ -1,0 +1,96 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/z-index' as zindex;
+
+.toast-stack {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: zindex.$layer-3;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: calc(100vw - 48px);
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 280px;
+  max-width: 420px;
+  padding: 14px 18px;
+  background: colors.$baseBackground;
+  border: 1px solid colors.$baseDarkText;
+  color: colors.$baseText;
+  font-size: 14px;
+  letter-spacing: 1px;
+  pointer-events: auto;
+  animation: toast-in 0.25s ease-out;
+}
+
+.toast--leaving {
+  pointer-events: none;
+  animation: toast-out 0.25s ease-in forwards;
+}
+
+.toast--error {
+  border-color: colors.$errorRed;
+  box-shadow:
+    0 0 16px 4px colors.$darkRed,
+    0 0 12px 2px colors.$darkRed inset;
+}
+
+.toast--success {
+  border-color: colors.$successGreen;
+  box-shadow:
+    0 0 16px 4px colors.$darkGreen,
+    0 0 12px 2px colors.$darkGreen inset;
+}
+
+.toast__message {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.toast__close {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: colors.$baseDarkText;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: colors.$baseWhite;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}

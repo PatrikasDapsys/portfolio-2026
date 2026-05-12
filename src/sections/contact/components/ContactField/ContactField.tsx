@@ -8,6 +8,7 @@ type BaseContactFieldProps = {
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   fieldClassName?: string;
+  error?: string | null;
 };
 
 type InputContactFieldProps = BaseContactFieldProps & {
@@ -29,9 +30,10 @@ type TextareaContactFieldProps = BaseContactFieldProps & {
 type ContactFieldProps = InputContactFieldProps | TextareaContactFieldProps;
 
 export function ContactField(props: ContactFieldProps) {
-  const { id, name, label, value, onChange, fieldClassName } = props;
+  const { id, name, label, value, onChange, fieldClassName, error } = props;
 
   const className = fieldClassName ? `contact__field ${fieldClassName}` : 'contact__field';
+  const errorId = error ? `${id}-error` : undefined;
 
   return (
     <div className={className}>
@@ -45,6 +47,8 @@ export function ContactField(props: ContactFieldProps) {
             onChange={onChange}
             placeholder=" "
             {...props.textareaProps}
+            aria-invalid={error ? true : undefined}
+            aria-describedby={errorId}
           />
           <span className="contact__top-border" aria-hidden="true" />
         </>
@@ -57,11 +61,18 @@ export function ContactField(props: ContactFieldProps) {
           onChange={onChange}
           placeholder=" "
           {...props.inputProps}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={errorId}
         />
       )}
       <label className="contact__label" htmlFor={id}>
         {label}
       </label>
+      {error ? (
+        <p id={errorId} className="contact__field-error" role="alert">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }

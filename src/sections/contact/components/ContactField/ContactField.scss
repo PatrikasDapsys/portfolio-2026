@@ -106,3 +106,14 @@
     100% 1px,
     100% 1px;
 }
+
+.contact__field-error {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  color: colors.$errorRed;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+}
