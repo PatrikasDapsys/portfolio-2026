@@ -5,24 +5,15 @@ import { useToast } from '../../components/Toast/useToast';
 import './ContactForm.scss';
 
 type FieldErrors = {
-  email?: string;
   title?: string;
   message?: string;
 };
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_MESSAGE_LENGTH = 10;
 const MAX_MAILTO_LENGTH = 2000;
 
-function validate(email: string, title: string, message: string): FieldErrors {
+function validate(title: string, message: string): FieldErrors {
   const errors: FieldErrors = {};
-
-  const trimmedEmail = email.trim();
-  if (!trimmedEmail) {
-    errors.email = 'Email is required';
-  } else if (!EMAIL_PATTERN.test(trimmedEmail)) {
-    errors.email = 'Enter a valid email address';
-  }
 
   if (!title.trim()) {
     errors.title = 'Title is required';
@@ -40,7 +31,6 @@ function validate(email: string, title: string, message: string): FieldErrors {
 
 export function ContactForm() {
   const { showToast } = useToast();
-  const [email, setEmail] = useState('');
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
@@ -57,7 +47,7 @@ export function ContactForm() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const errors = validate(email, title, message);
+    const errors = validate(title, message);
     setFieldErrors(errors);
     if (Object.keys(errors).length > 0) return;
 
@@ -70,10 +60,9 @@ export function ContactForm() {
       return;
     }
 
-    const trimmedEmail = email.trim();
     const trimmedTitle = title.trim();
     const trimmedMessage = message.trim();
-    const body = `From: ${trimmedEmail}\n\n${trimmedMessage}`;
+    const body = trimmedMessage;
     const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(
       trimmedTitle,
     )}&body=${encodeURIComponent(body)}`;
@@ -95,20 +84,6 @@ export function ContactForm() {
 
   return (
     <form className="contact__form" onSubmit={handleSubmit} noValidate>
-      <div className="contact__field-container contact__field-container--email">
-        <ContactField
-          id="contact-email"
-          name="email"
-          label="Email"
-          value={email}
-          onChange={(event) => {
-            setEmail(event.target.value);
-            clearError('email');
-          }}
-          error={fieldErrors.email}
-          inputProps={{ type: 'email', autoComplete: 'email', maxLength: 60 }}
-        />
-      </div>
       <div className="contact__field-container contact__field-container--title">
         <ContactField
           id="contact-title"

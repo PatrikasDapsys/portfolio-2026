@@ -1,13 +1,16 @@
 import './LandingTopSection.scss';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faFileLines } from '@fortawesome/free-solid-svg-icons';
+import { HackerWord } from '../../../../components/HackerWord/HackerWord';
 import { LandingSocialLink } from './components/LandingSocialLink/LandingSocialLink';
 
 export function LandingTopSection() {
   return (
     <div className="landing__top-section">
       <div className="landing__top-section--left">
-        <h1 className="landing__title">Patrikas Dapšys</h1>
+        <h1 className="landing__title">
+          <HackerWord text="Patrikas Dapšys" retriggerOnHover scrambleIntervalMs={100} resolveIntervalMs={80} />
+        </h1>
         <p className="landing__description">
           I'm a <span className="highlight">Frontend software engineer</span> with a strong{' '}
           <span className="highlight">passion</span> for building web applications with
