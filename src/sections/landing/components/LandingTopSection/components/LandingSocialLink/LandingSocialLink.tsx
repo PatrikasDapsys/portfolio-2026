@@ -27,6 +27,7 @@ export function LandingSocialLink({ icon, label, link, outsideLink = false }: La
         <a
           className="landing-social-link__container"
           href={link}
+          aria-label={label}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -45,6 +46,7 @@ export function LandingSocialLink({ icon, label, link, outsideLink = false }: La
       <a
         className="landing-social-link__container"
         href={href}
+        aria-label={label}
         onClick={handleSectionClick}
       >
         <span className="landing-social-link__text highlight">{label}</span>
