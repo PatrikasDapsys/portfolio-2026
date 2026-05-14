@@ -41,6 +41,15 @@ $icon-size: 48px;
   }
 }
 
+// Mirrors the inline-SVG sizing that FontAwesome's `size="xs"` previously applied.
+.footer__scroll-top-icon {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+
 .footer__links {
   display: flex;
   align-items: center;

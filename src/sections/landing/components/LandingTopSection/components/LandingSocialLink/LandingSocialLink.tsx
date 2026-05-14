@@ -1,7 +1,6 @@
 import './LandingSocialLink.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import type { MouseEvent } from 'react';
+import { SocialIcon, type SocialIconName } from './SocialIcon';
 import {
   opensInNewTab,
   scrollToSectionById,
@@ -9,13 +8,13 @@ import {
 } from '../../../../../../utils/scrollToSection';
 
 type LandingSocialLinkProps = {
-  icon: IconProp;
+  iconName: SocialIconName;
   label: string;
   link: string;
   outsideLink?: boolean;
 };
 
-export function LandingSocialLink({ icon, label, link, outsideLink = false }: LandingSocialLinkProps) {
+export function LandingSocialLink({ iconName, label, link, outsideLink = false }: LandingSocialLinkProps) {
   const handleSectionClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     scrollToSectionById(sectionIdFromLink(link));
@@ -32,7 +31,7 @@ export function LandingSocialLink({ icon, label, link, outsideLink = false }: La
           rel="noopener noreferrer"
         >
           <span className="landing-social-link__text highlight">{label}</span>
-          <FontAwesomeIcon icon={icon} />
+          <SocialIcon name={iconName} />
         </a>
       </li>
     );
@@ -50,7 +49,7 @@ export function LandingSocialLink({ icon, label, link, outsideLink = false }: La
         onClick={handleSectionClick}
       >
         <span className="landing-social-link__text highlight">{label}</span>
-        <FontAwesomeIcon icon={icon} />
+        <SocialIcon name={iconName} />
       </a>
     </li>
   );

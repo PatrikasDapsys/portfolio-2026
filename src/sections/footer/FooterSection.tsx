@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import type { MouseEvent } from 'react';
 import { handleInPageNavClick, opensInNewTab } from '../../utils/scrollToSection';
 import './FooterSection.scss';
@@ -26,7 +24,18 @@ export function FooterSection() {
         aria-label="Back to top"
         onClick={handleScrollTopClick}
       >
-        <FontAwesomeIcon icon={faAngleUp} size="xs" />
+        <svg
+          className="footer__scroll-top-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            fill="currentColor"
+            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3l137.4 137.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+          />
+        </svg>
       </a>
 
       <nav className="footer__links" aria-label="Footer links">

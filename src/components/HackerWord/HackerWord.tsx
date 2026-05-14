@@ -56,9 +56,10 @@ function HackerWordImpl({
 
   const [replayNonce, setReplayNonce] = useState(0);
 
-  const [output, setOutput] = useState(() =>
-    length > 0 ? buildOutput(chars, 0, charset) : '',
-  );
+  // Initialize with the fully-resolved text so the first paint shows the real
+  // content (clean LCP, no CLS from char-width drift). The scramble starts in
+  // the useEffect below, which runs after the first commit.
+  const [output, setOutput] = useState(() => (length > 0 ? chars.join('') : ''));
   const kRef = useRef(0);
   const onCompleteRef = useRef(onComplete);
 
