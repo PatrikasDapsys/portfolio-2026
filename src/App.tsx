@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import { LandingSection } from './sections/landing/LandingSection';
 import { SummarySection } from './sections/summary/SummarySection';
-import { ToastProvider } from './components/Toast/ToastProvider';
 import { lazyNamed } from './utils/lazyNamed';
 
 const ExperienceSection = lazyNamed(
@@ -19,27 +18,25 @@ const FooterSection = lazyNamed(
 
 function App() {
   return (
-    <ToastProvider>
-      <main id="top" className="app-shell">
-        <div className="starfield-background" aria-hidden="true">
-          <div className="starfield-layer-small" />
-          <div className="starfield-layer-medium" />
-        </div>
-        <div className="app-shell__content">
-          <LandingSection />
-          <SummarySection />
-          <Suspense fallback={null}>
-            <ExperienceSection />
-          </Suspense>
-          <Suspense fallback={null}>
-            <ContactSection />
-          </Suspense>
-          <Suspense fallback={null}>
-            <FooterSection />
-          </Suspense>
-        </div>
-      </main>
-    </ToastProvider>
+    <main id="top" className="app-shell">
+      <div className="starfield-background" aria-hidden="true">
+        <div className="starfield-layer-small" />
+        <div className="starfield-layer-medium" />
+      </div>
+      <div className="app-shell__content">
+        <LandingSection />
+        <SummarySection />
+        <Suspense fallback={null}>
+          <ExperienceSection />
+        </Suspense>
+        <Suspense fallback={null}>
+          <ContactSection />
+        </Suspense>
+        <Suspense fallback={null}>
+          <FooterSection />
+        </Suspense>
+      </div>
+    </main>
   );
 }
 
