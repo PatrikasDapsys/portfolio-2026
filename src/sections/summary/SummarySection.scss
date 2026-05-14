@@ -101,6 +101,10 @@ $summary-ray-steps: (
   }
 }
 
+.summary__image-wrapper picture {
+  display: contents;
+}
+
 .summary__image-skeleton {
   position: absolute;
   inset: 0;

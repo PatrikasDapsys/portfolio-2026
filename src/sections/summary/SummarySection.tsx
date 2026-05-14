@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import './SummarySection.scss';
 import portfolioPhoto from '../../assets/portfolioPhoto.webp';
+import portfolioPhotoDesktop from '../../assets/portfolioPhoto-desktop.webp';
 
-const PORTFOLIO_PHOTO_WIDTH = 902;
-const PORTFOLIO_PHOTO_HEIGHT = 800;
+/** Matches `breakpoints.$breakpoint-md` — desktop row layout uses a narrower image slot. */
+const PORTFOLIO_PHOTO_DESKTOP_MEDIA = '(min-width: 768px)';
+
+const PORTFOLIO_PHOTO_WIDTH = 400;
+const PORTFOLIO_PHOTO_HEIGHT = 355;
 
 export function SummarySection() {
   const imageRef = useRef<HTMLImageElement>(null);
@@ -22,18 +26,25 @@ export function SummarySection() {
           className={`summary__image-wrapper${imageLoaded ? ' summary__image-wrapper--loaded' : ''}`}
         >
           <div className="summary__image-skeleton" aria-hidden="true" />
-          <img
-            ref={imageRef}
-            className="summary__image"
-            src={portfolioPhoto}
-            width={PORTFOLIO_PHOTO_WIDTH}
-            height={PORTFOLIO_PHOTO_HEIGHT}
-            alt="Patrikas portrait"
-            loading="lazy"
-            decoding="async"
-            onLoad={() => setImageLoaded(true)}
-            onError={() => setImageLoaded(true)}
-          />
+          <picture>
+            <source
+              media={PORTFOLIO_PHOTO_DESKTOP_MEDIA}
+              srcSet={portfolioPhotoDesktop}
+              type="image/webp"
+            />
+            <img
+              ref={imageRef}
+              className="summary__image"
+              src={portfolioPhoto}
+              width={PORTFOLIO_PHOTO_WIDTH}
+              height={PORTFOLIO_PHOTO_HEIGHT}
+              alt="Patrikas portrait"
+              loading="lazy"
+              decoding="async"
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageLoaded(true)}
+            />
+          </picture>
         </div>
         <div className="summary__text">
           <h3 className="summary__text-title">About Me</h3>
