@@ -1,9 +1,21 @@
-import { ExperienceSection } from './sections/experience/ExperienceSection';
+import { Suspense } from 'react';
 import { LandingSection } from './sections/landing/LandingSection';
 import { SummarySection } from './sections/summary/SummarySection';
-import { ContactSection } from './sections/contact/ContactSection';
-import { FooterSection } from './sections/footer/FooterSection';
 import { ToastProvider } from './components/Toast/ToastProvider';
+import { lazyNamed } from './utils/lazyNamed';
+
+const ExperienceSection = lazyNamed(
+  () => import('./sections/experience/ExperienceSection'),
+  'ExperienceSection',
+);
+const ContactSection = lazyNamed(
+  () => import('./sections/contact/ContactSection'),
+  'ContactSection',
+);
+const FooterSection = lazyNamed(
+  () => import('./sections/footer/FooterSection'),
+  'FooterSection',
+);
 
 function App() {
   return (
@@ -16,9 +28,15 @@ function App() {
         <div className="app-shell__content">
           <LandingSection />
           <SummarySection />
-          <ExperienceSection />
-          <ContactSection />
-          <FooterSection />
+          <Suspense fallback={null}>
+            <ExperienceSection />
+          </Suspense>
+          <Suspense fallback={null}>
+            <ContactSection />
+          </Suspense>
+          <Suspense fallback={null}>
+            <FooterSection />
+          </Suspense>
         </div>
       </main>
     </ToastProvider>
