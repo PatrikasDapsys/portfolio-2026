@@ -1,12 +1,18 @@
 import './LandingTopSection.scss';
-import { HackerWord } from '../../../../components/HackerWord/HackerWord';
+import { Suspense } from 'react';
 import { LandingSocialLink } from './components/LandingSocialLink/LandingSocialLink';
+import { lazyNamed } from '../../../../utils/lazyNamed';
 import { useMediaQuery } from '../../../../utils/useMediaQuery';
 
 const TITLE_TEXT = 'Patrikas Dapšys';
 
 /** Matches `breakpoints.$breakpoint-md` — skip HackerWord below tablet width. */
 const HACKER_WORD_MEDIA = '(min-width: 768px)';
+
+const HackerWord = lazyNamed(
+  () => import('../../../../components/HackerWord/HackerWord'),
+  'HackerWord',
+);
 
 export function LandingTopSection() {
   const enableHackerWord = useMediaQuery(HACKER_WORD_MEDIA);
@@ -16,12 +22,14 @@ export function LandingTopSection() {
       <div className="landing__top-section--left">
         <h1 className="landing__title">
           {enableHackerWord ? (
-            <HackerWord
-              text={TITLE_TEXT}
-              retriggerOnHover
-              scrambleIntervalMs={100}
-              resolveIntervalMs={80}
-            />
+            <Suspense fallback={TITLE_TEXT}>
+              <HackerWord
+                text={TITLE_TEXT}
+                retriggerOnHover
+                scrambleIntervalMs={100}
+                resolveIntervalMs={80}
+              />
+            </Suspense>
           ) : (
             TITLE_TEXT
           )}

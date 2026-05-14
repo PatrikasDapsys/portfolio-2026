@@ -1,8 +1,11 @@
 import { Suspense } from 'react';
 import { LandingSection } from './sections/landing/LandingSection';
-import { SummarySection } from './sections/summary/SummarySection';
 import { lazyNamed } from './utils/lazyNamed';
 
+const SummarySection = lazyNamed(
+  () => import('./sections/summary/SummarySection'),
+  'SummarySection',
+);
 const ExperienceSection = lazyNamed(
   () => import('./sections/experience/ExperienceSection'),
   'ExperienceSection',
@@ -25,7 +28,9 @@ function App() {
       </div>
       <div className="app-shell__content">
         <LandingSection />
-        <SummarySection />
+        <Suspense fallback={null}>
+          <SummarySection />
+        </Suspense>
         <Suspense fallback={null}>
           <ExperienceSection />
         </Suspense>
