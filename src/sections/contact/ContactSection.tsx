@@ -1,6 +1,7 @@
 import { ToastProvider } from '../../components/Toast/ToastProvider';
 import './ContactSection.scss';
 import { ContactForm } from './ContactForm';
+import { CopyEmailButton } from './components/CopyEmailButton/CopyEmailButton';
 
 export function ContactSection() {
   return (
@@ -22,6 +23,7 @@ export function ContactSection() {
           </p>
           <hr className="contact__divider" />
           <ContactForm />
+          <CopyEmailButton />
         </div>
       </section>
     </ToastProvider>

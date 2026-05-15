@@ -1,0 +1,72 @@
+@use '../../../../styles/colors' as colors;
+@use '../../../../styles/breakpoints' as breakpoints;
+
+.copy-email {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 8px;
+  color: colors.$baseText;
+  font-size: 14px;
+
+  @media (min-width: breakpoints.$breakpoint-sm) {
+    gap: 14px;
+    font-size: 16px;
+  }
+}
+
+.copy-email__lead {
+  color: colors.$baseDarkText;
+}
+
+.copy-email__address {
+  color: colors.$baseWhite;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: colors.$baseDarkText;
+  transition: text-decoration-color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration-color: colors.$baseWhite;
+  }
+}
+
+.copy-email__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid colors.$baseDarkText;
+  padding: 8px;
+  background: transparent;
+  color: colors.$baseText;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: colors.$baseText;
+    color: colors.$baseWhite;
+    box-shadow: 0 0 12px 0 colors.$darkBlue;
+  }
+}
+
+.copy-email__button--copied {
+  box-shadow:
+    0 0 12px 0 colors.$darkBlue,
+    0 0 12px 2px colors.$darkBlue inset;
+}
+
+.copy-email__icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
