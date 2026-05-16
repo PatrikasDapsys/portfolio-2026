@@ -6,6 +6,7 @@ import {
   scrollToSectionById,
   sectionIdFromLink,
 } from '../../../../../../utils/scrollToSection';
+import { trackOutboundClick } from '../../../../../../utils/analytics';
 
 type LandingSocialLinkProps = {
   iconName: SocialIconName;
@@ -29,6 +30,7 @@ export function LandingSocialLink({ iconName, label, link, outsideLink = false }
           aria-label={label}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackOutboundClick(link, label)}
         >
           <span className="landing-social-link__text highlight">{label}</span>
           <SocialIcon name={iconName} />

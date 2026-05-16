@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useToast } from '../../../../components/Toast/useToast';
+import { trackEvent } from '../../../../utils/analytics';
 import './CopyEmailButton.scss';
 
 const COPIED_RESET_MS = 2000;
@@ -22,6 +23,7 @@ export function CopyEmailButton() {
     try {
       if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
       await navigator.clipboard.writeText(email);
+      trackEvent('copy_email');
       showToast({ variant: 'success', message: 'Email copied to clipboard.' });
       setCopied(true);
       if (resetTimerRef.current !== null) window.clearTimeout(resetTimerRef.current);

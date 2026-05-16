@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { ContactField } from './components/ContactField/ContactField';
 import { useToast } from '../../components/Toast/useToast';
+import { trackEvent } from '../../utils/analytics';
 import './ContactForm.scss';
 
 type FieldErrors = {
@@ -75,6 +76,7 @@ export function ContactForm() {
       return;
     }
 
+    trackEvent('contact_submit');
     window.location.href = mailtoUrl;
     showToast({
       variant: 'success',

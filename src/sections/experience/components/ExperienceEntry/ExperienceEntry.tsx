@@ -1,3 +1,4 @@
+import { trackOutboundClick } from '../../../../utils/analytics';
 import './ExperienceEntry.scss';
 
 type ExperienceEntryProps = {
@@ -30,7 +31,12 @@ export function ExperienceEntry({
             <div className="experience-entry__date">{date}</div>
             {hasEmployer && (
               <div className="experience-entry__employer">
-                <a href={employerWebsite} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={employerWebsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackOutboundClick(employerWebsite, employerName)}
+                >
                   {employerName}
                 </a>
               </div>

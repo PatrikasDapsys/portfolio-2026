@@ -1,5 +1,6 @@
 import type { MouseEvent } from 'react';
 import { handleInPageNavClick, opensInNewTab } from '../../utils/scrollToSection';
+import { trackOutboundClick } from '../../utils/analytics';
 import './FooterSection.scss';
 
 const footerLinks = [
@@ -39,18 +40,25 @@ export function FooterSection() {
       </a>
 
       <nav className="footer__links" aria-label="Footer links">
-        {footerLinks.map((link) => (
-          <a
-            className="footer__link"
-            key={link.label}
-            href={link.href}
-            target={opensInNewTab(link.href) ? '_blank' : undefined}
-            rel={opensInNewTab(link.href) ? 'noopener noreferrer' : undefined}
-            onClick={link.href.startsWith('#') ? handleInPageNavClick : undefined}
-          >
-            {link.label}
-          </a>
-        ))}
+        {footerLinks.map((link) => {
+          const isInPageLink = link.href.startsWith('#');
+          return (
+            <a
+              className="footer__link"
+              key={link.label}
+              href={link.href}
+              target={opensInNewTab(link.href) ? '_blank' : undefined}
+              rel={opensInNewTab(link.href) ? 'noopener noreferrer' : undefined}
+              onClick={
+                isInPageLink
+                  ? handleInPageNavClick
+                  : () => trackOutboundClick(link.href, link.label)
+              }
+            >
+              {link.label}
+            </a>
+          );
+        })}
       </nav>
 
       <p className="footer__copyright">Copyright © Patrikas Dapšys {currentYear}</p>

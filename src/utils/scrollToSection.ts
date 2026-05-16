@@ -1,4 +1,5 @@
 import type { MouseEvent } from 'react';
+import { trackSectionView } from './analytics';
 
 export function scrollToSectionById(id: string) {
   const element = document.getElementById(id);
@@ -10,6 +11,7 @@ export function scrollToSectionById(id: string) {
     block: 'start',
   });
   window.history.pushState(null, '', `#${id}`);
+  trackSectionView(id);
 }
 
 export function sectionIdFromLink(link: string) {
